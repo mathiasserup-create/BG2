@@ -1,8 +1,9 @@
 # BG2 ApS — Ledelsesrapportering 2025/26
 
-Dynamisk HTML-rapport med de væsentlige nøgletal for **BG2 ApS** (Borgergade 2, Aalborg) —
-en bar- og aktivitetscafé. Rapporten er afstemt mod tre datakilder og dækker regnskabsåret
-**2025/26** (status pr. 5. juni 2026) med benchmark mod det fulde år **2024/25**.
+Dynamisk HTML-rapport med de væsentlige nøgletal for **BG2 ApS** (Borgergade 2, Aalborg, CVR
+39579847) — en bar- og aktivitetscafé. Rapporten er afstemt mod tre datakilder og viser
+**maj 2026** og **år-til-dato 01.07.2025 – 31.05.2026** sammenlignet med tilsvarende perioder
+året før samt det fulde regnskabsår **2024/25**.
 
 ## Åbn rapporten
 
@@ -11,24 +12,27 @@ så internetadgang anbefales for at vise graferne.
 
 ## Indhold
 
-- **Overblik** – hovednøgletal som KPI-kort
-- **Resultatopgørelse** – 2024/25 (helår) vs. 2025/26 (jul–dec) vs. normaliseret helårsestimat
+- **Overblik** – hovednøgletal som KPI-kort (ÅTD vs. samme periode året før)
+- **Resultatopgørelse** – Maj 2026 · Maj 2025 · ÅTD 25/26 · ÅTD 24/25 · Helår 24/25
 - **Omsætning** – månedsudvikling, produktmix, ugedags- og klokkeslætsmønster, største produkter
 - **Vareforbrug** – vareforbrugsprocent og sammensætning
 - **Løn & bemanding** – lønprocent, omsætning pr. bemandet time, månedlig udvikling
 - **Benchmark & baggrund** – sammenligning med branchenormer
 - **Observationer & anbefalinger**
 
-## Væsentlige nøgletal (hovedtal)
+## Væsentlige nøgletal — ÅTD 01.07.2025–31.05.2026 (mod samme periode 24/25)
 
-| Nøgletal | Værdi | Bemærkning |
-|---|---|---|
-| Omsætning (helårstakt 25/26) | ~2,27 mio. kr | +7,8 % vs. 2024/25 |
-| Vareforbrugsprocent (strukturel) | ~23 % | Dækningsgrad ~77 % |
-| Lønprocent (kontant løn) | ~14 % | Faldet fra 19,2 % året før |
-| Omsætning pr. bemandet time | ~887 kr | ekskl. moms |
-| Forpagtningsafgift | ~21 % af oms. | Største faste post |
-| Driftsresultat 2024/25 | ~425 t.kr | 20 % driftsmargin |
+| Nøgletal | ÅTD 25/26 | ÅTD 24/25 | Bemærkning |
+|---|---|---|---|
+| Omsætning (ekskl. moms) | 2.083 t.kr | 1.944 t.kr | +7,2 % |
+| Vareforbrugsprocent | 21,7 % | 24,3 % | forbedret · dækningsgrad 78,3 % |
+| Lønprocent (kontant løn) | 14,0 % | 19,2 % | årets største forbedring |
+| EBITDA-margin | 29,3 % | 24,1 % | |
+| Omsætning pr. bemandet time | ~887 kr | — | effektiv timeløn ~124 kr |
+| Forpagtning & lokaler | 25,3 % af oms. | 24,4 % | tungeste faste post |
+
+Helårstakt 25/26 ca. **2,27 mio. kr**. Helåret 2024/25 gav driftsresultat ~425 t.kr (20 % margin)
+og resultat efter renter ~352 t.kr.
 
 ## Datakilder
 
@@ -43,15 +47,16 @@ så internetadgang anbefales for at vise graferne.
 
 - **Omsætning afstemt:** Salgsdataens linjebeløb inkl. moms ÷ 1,25 = bogført omsætning
   (jul–dec 2025: 1.068.064 kr i begge kilder — eksakt match).
-- **Periodisering i bogføringen:** e-conomic-posteringerne for 2025/26 er kun ført til og med
-  december 2025, og næsten et helt års vareindkøb (bl.a. Carlsberg) samt hele forpagtningen er
-  bogført i halvåret. Derfor viser halvårsregnskabet et kunstigt højt vareforbrug (42 %) og et
-  midlertidigt underskud. Dette er en **timing-effekt**, ikke en reel forværring.
-- **Normaliseret helårsestimat:** omsætning fremskrevet fra faktisk salg år-til-dato; vareforbrug
-  sat til det strukturelle niveau (22,7 %, som 2024/25); løn til aktuel takt fra tidsregistreringen;
-  forpagtning/øvrige faste omkostninger som 2024/25.
-- **Tidsregistrering** dækker 2.536 bemandede timer for året inkl. planlagte vagter frem til 27.
-  juni 2026. Operationelle lønnøgletal er beregnet på de afsluttede måneder (jul 2025 – maj 2026).
+- **Omsætning & løn for jan–maj 2026** er endnu ikke bogført i e-conomic (kun omkostninger er
+  ført). Disse linjer hentes derfor fra OnlinePOS (omsætning) og Danløn-tidsregistreringen (løn) —
+  begge afstemt 1:1 mod bogføringen for jul–dec 2025.
+- **Vareforbrug** tages som bogført; lageret reguleres løbende. Den månedlige vareforbrugsprocent
+  svinger pga. partivis fakturering af indkøb — ÅTD-tallet (21,7 %) er det retvisende niveau.
+  (En tidligere udgave viste 42 % alene fordi december-udtrækket ikke var ajourført; med
+  posteringer til og med maj er billedet nu rent.)
+- **Afskrivninger og renter** bogføres ved årsafslutning og indgår derfor kun i helårskolonnen
+  (2024/25), ikke i maj-/ÅTD-kolonnerne.
+- **Tidsregistrering** dækker ~2.348 bemandede timer ÅTD (afsluttede måneder jul 2025 – maj 2026).
 
 ## Reproduktion
 

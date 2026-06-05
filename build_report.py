@@ -27,6 +27,7 @@ def load_post(path):
     df = pd.read_excel(path, header=5).dropna(subset=['Konto'])
     df['Konto'] = df['Konto'].astype(int)
     df['Beløb'] = pd.to_numeric(df['Beløb'], errors='coerce').fillna(0)
+    df['ym'] = pd.to_datetime(df['Dato']).dt.to_period('M').astype(str)
     return df
 
 def gs(df, lo, hi):
@@ -93,8 +94,10 @@ def main():
     ap.add_argument('--out', default='.', help='output-mappe')
     a = ap.parse_args()
 
-    p24 = build_pnl(load_post(find(a.src, '*Posteringer*01.07.24*xlsx', '*24.25*xlsx')))
-    p25 = build_pnl(load_post(find(a.src, '*Posteringer*01.07.25*xlsx', '*25.26*xlsx')))
+    post25 = load_post(find(a.src, '*Posteringer*01.07.25*xlsx', '*25.26*xlsx'))
+    post24 = load_post(find(a.src, '*Posteringer*01.07.24*xlsx', '*24.25*xlsx'))
+    p24 = build_pnl(post24)
+    p25 = build_pnl(post25)
     s = build_sales(find(a.src, '*Salgsdata*xlsx'))
     sh = build_shifts(find(a.src, '*PDF*pdf', '*Lonspec*pdf'))
 
@@ -109,6 +112,14 @@ def main():
 
     act = mon.loc['2025-07':'2026-05']          # afsluttede måneder
     ytd_sales, ytd_wage, ytd_hours = act['sales_ex'].sum(), act['wage'].sum(), act['hours'].sum()
+    # månedlig vareforbrugsprocent (e-conomic 1300-1399 ÷ POS-omsætning)
+    post25['m'] = post25['ym']
+    cogs_m = post25[(post25['Konto'] >= 1300) & (post25['Konto'] <= 1399)].groupby('ym')['Beløb'].sum()
+    for r in monthly:
+        c = float(cogs_m.get(r['ym'], 0.0))
+        r['cogs'] = round(c)
+        r['cogs_pct'] = round(c / r['sales_ex'] * 100, 1) if r['sales_ex'] else None
+
     rec = s.groupby('receipt')['ex'].sum()
     catmix = {k: round(float(v)) for k, v in s.groupby('catg')['ex'].sum().items() if v > 1}
     pay = {k: round(float(v)) for k, v in s.groupby('pay')['ex'].sum().items()}
@@ -132,6 +143,39 @@ def main():
                  eff_wage=round(ytd_wage / ytd_hours)),
     )
 
+    # ---- periodeopdelt resultatopgørelse (Maj + ÅTD + sammenligning) ----
+    m_atd26 = [f'2025-{m:02d}' for m in range(7, 13)] + [f'2026-{m:02d}' for m in range(1, 6)]
+    m_atd25 = [f'2024-{m:02d}' for m in range(7, 13)] + [f'2025-{m:02d}' for m in range(1, 6)]
+    pos_rev = lambda ms: sum(mon.loc[m, 'sales_ex'] for m in ms if m in mon.index)
+    dl_wage = lambda ms: sum(mon.loc[m, 'wage'] for m in ms if m in mon.index)
+    dl_hours = lambda ms: sum(mon.loc[m, 'hours'] for m in ms if m in mon.index)
+
+    def rsum(df, lo, hi, ms):
+        d = df[(df['Konto'] >= lo) & (df['Konto'] <= hi)]
+        return float(d[d['ym'].isin(ms)]['Beløb'].sum())
+
+    def period(df, ms, op):  # op=True -> brug POS/Danløn for omsætning+løn
+        rev = pos_rev(ms) if op else -rsum(df, 1010, 1099, ms)
+        wages = dl_wage(ms) if op else float(df[(df['Konto'] == 2210) & (df['ym'].isin(ms))]['Beløb'].sum())
+        d = dict(rev=rev, cogs=rsum(df, 1300, 1399, ms), wages=wages,
+                 hours=(dl_hours(ms) if op else None),
+                 premises=rsum(df, 3400, 3499, ms), forpagt=float(df[(df['Konto'] == 3410) & (df['ym'].isin(ms))]['Beløb'].sum()),
+                 salgadm=rsum(df, 2800, 2899, ms) + rsum(df, 3600, 3799, ms),
+                 deprec=rsum(df, 3900, 3949, ms), fin=rsum(df, 4000, 4999, ms))
+        d['db'] = d['rev'] - d['cogs']
+        d['otherext'] = d['premises'] + d['salgadm']
+        d['ebitda'] = d['db'] - d['wages'] - d['otherext']
+        return d
+
+    all24 = sorted(post24['ym'].unique())
+    periods = dict(
+        may26=period(post25, ['2026-05'], True), atd26=period(post25, m_atd26, True),
+        may25=period(post24, ['2025-05'], False), atd25=period(post24, m_atd25, False),
+        fy25=period(post24, all24, False),
+    )
+    ops['growth_atd'] = round((periods['atd26']['rev'] / periods['atd25']['rev'] - 1) * 100, 1)
+    ops['ann_sales'] = round(periods['atd26']['rev'] / len(m_atd26) * 12)
+
     # normaliseret helårsestimat
     norm = dict(rev=ops['ann_sales'], cogs=round(ops['ann_sales'] * 0.227),
                 wages_cash=round(ytd_wage / n_months * 12))
@@ -142,7 +186,7 @@ def main():
     norm['otherext'] = norm['premises'] + norm['salg'] + norm['admin']
     norm['ebitda'] = norm['db'] - norm['staff'] - norm['otherext']
 
-    master = dict(A=p24, B=p25, norm=norm, ops=ops)
+    master = dict(A=p24, B=p25, norm=norm, ops=ops, periods=periods)
     json.dump(master, open(os.path.join(a.out, 'data.json'), 'w'), ensure_ascii=False)
     print('Skrev data.json. Kør build_html-trinnet for at indlejre i index.html.')
     print(f"  Omsætning helårstakt 25/26: {ops['ann_sales']:,.0f} kr  | Lønprocent: {ops['ytd']['lonpct']}%")

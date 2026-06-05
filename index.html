@@ -6,35 +6,23 @@
 <title>BG2 ApS · Ledelsesrapportering 2025/26</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
-:root{
-  --bg:#0e1116; --panel:#161b24; --panel2:#1c2330; --line:#2a3340;
-  --ink:#e9eef5; --mut:#9aa7b8; --mut2:#6f7d90;
-  --acc:#ff8a00; --gold:#f5b324; --grn:#3ddc91; --red:#ff6b6b; --blue:#5aa9ff; --pur:#b58cff;
-}
+:root{--bg:#0e1116;--panel:#161b24;--panel2:#1c2330;--line:#2a3340;--ink:#e9eef5;--mut:#9aa7b8;--mut2:#6f7d90;
+  --gold:#f5b324;--grn:#3ddc91;--red:#ff6b6b;--blue:#5aa9ff;--pur:#b58cff}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Segoe UI',system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
-  background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+body{font-family:'Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
 a{color:var(--blue);text-decoration:none}
 .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
-/* hero */
-header{background:linear-gradient(135deg,#11161f 0%,#1a2230 60%,#241c33 100%);
-  border-bottom:1px solid var(--line);padding:54px 0 30px;position:relative;overflow:hidden}
-header:before{content:"";position:absolute;right:-80px;top:-80px;width:320px;height:320px;
-  background:radial-gradient(circle,rgba(245,179,36,.18),transparent 70%);}
+header{background:linear-gradient(135deg,#11161f 0%,#1a2230 60%,#241c33 100%);border-bottom:1px solid var(--line);padding:54px 0 30px;position:relative;overflow:hidden}
+header:before{content:"";position:absolute;right:-80px;top:-80px;width:320px;height:320px;background:radial-gradient(circle,rgba(245,179,36,.18),transparent 70%)}
 .brand{display:flex;align-items:center;gap:16px}
-.logo{width:62px;height:62px;border-radius:14px;background:linear-gradient(135deg,#f5b324,#e8731c);
-  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:24px;color:#1a1205;
-  box-shadow:0 8px 24px rgba(245,179,36,.25)}
+.logo{width:62px;height:62px;border-radius:14px;background:linear-gradient(135deg,#f5b324,#e8731c);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:24px;color:#1a1205;box-shadow:0 8px 24px rgba(245,179,36,.25)}
 h1{font-size:30px;font-weight:750;letter-spacing:-.5px}
 .sub{color:var(--mut);font-size:15px;margin-top:3px}
 .tagrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
-.tag{background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:999px;
-  padding:6px 14px;font-size:13px;color:var(--mut)}
+.tag{background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:13px;color:var(--mut)}
 .tag b{color:var(--ink)}
-/* nav */
-nav{position:sticky;top:0;z-index:50;background:rgba(14,17,22,.92);backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--line)}
+nav{position:sticky;top:0;z-index:50;background:rgba(14,17,22,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .navin{display:flex;gap:4px;overflow-x:auto;padding:8px 0}
 nav a{color:var(--mut);padding:9px 15px;border-radius:9px;font-size:14px;font-weight:550;white-space:nowrap}
 nav a:hover{background:var(--panel);color:var(--ink)}
@@ -42,72 +30,54 @@ nav a.on{background:var(--panel2);color:var(--gold)}
 section{padding:42px 0;border-bottom:1px solid var(--line)}
 h2{font-size:23px;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:10px}
 h2 .n{color:var(--gold);font-size:15px;font-weight:700;opacity:.8}
-.lead{color:var(--mut);max-width:780px;margin-bottom:24px;font-size:15.5px}
-/* kpi cards */
+.lead{color:var(--mut);max-width:820px;margin-bottom:24px;font-size:15.5px}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
-.kpi{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 18px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}
 .kpi .lab{color:var(--mut);font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
 .kpi .val{font-size:29px;font-weight:760;margin:6px 0 2px;letter-spacing:-.5px}
 .kpi .meta{font-size:13px;color:var(--mut2)}
-.kpi.good{border-left:3px solid var(--grn)} .kpi.warn{border-left:3px solid var(--gold)}
-.kpi.bad{border-left:3px solid var(--red)} .kpi.neu{border-left:3px solid var(--blue)}
-.delta{font-weight:700;font-size:13px} .up{color:var(--grn)} .dn{color:var(--red)}
-/* grid + cards */
+.kpi.good{border-left:3px solid var(--grn)}.kpi.warn{border-left:3px solid var(--gold)}.kpi.bad{border-left:3px solid var(--red)}.kpi.neu{border-left:3px solid var(--blue)}
+.up{color:var(--grn);font-weight:700}.dn{color:var(--red);font-weight:700}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
 .card h3{font-size:16px;font-weight:650;margin-bottom:4px}
 .card .hint{color:var(--mut2);font-size:13px;margin-bottom:14px}
-.chartbox{position:relative;height:300px}
-.chartbox.tall{height:340px}
-/* table */
-table{width:100%;border-collapse:collapse;font-size:14.5px}
-th,td{padding:10px 12px;text-align:right;border-bottom:1px solid var(--line)}
+.chartbox{position:relative;height:300px}.chartbox.tall{height:340px}
+.scroller{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:560px}
+th,td{padding:9px 11px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
 th:first-child,td:first-child{text-align:left}
-thead th{color:var(--mut);font-size:12.5px;text-transform:uppercase;letter-spacing:.4px;font-weight:650}
+thead th{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.3px;font-weight:650}
+.colcur{color:var(--gold)}
 tbody tr:hover{background:var(--panel2)}
 tr.sum td{font-weight:750;border-top:2px solid var(--line);background:rgba(255,255,255,.02)}
-tr.sub td:first-child{padding-left:26px;color:var(--mut)}
-.pos{color:var(--grn)} .neg{color:var(--red)}
+td .p{color:var(--mut2);font-size:11.5px;margin-left:4px}
+.pos{color:var(--grn)}.neg{color:var(--red)}
 .pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:650}
-.pill.g{background:rgba(61,220,145,.15);color:var(--grn)}
-.pill.y{background:rgba(245,179,36,.15);color:var(--gold)}
-.pill.r{background:rgba(255,107,107,.15);color:var(--red)}
-.note{background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--gold);
-  border-radius:10px;padding:14px 16px;font-size:14px;color:var(--mut);margin-top:16px}
+.pill.g{background:rgba(61,220,145,.15);color:var(--grn)}.pill.y{background:rgba(245,179,36,.15);color:var(--gold)}.pill.r{background:rgba(255,107,107,.15);color:var(--red)}
+.note{background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:10px;padding:14px 16px;font-size:13.5px;color:var(--mut);margin-top:16px}
 .note b{color:var(--ink)}
-.toggle{display:inline-flex;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:4px;gap:4px;margin-bottom:18px}
-.toggle button{background:none;border:0;color:var(--mut);padding:7px 14px;border-radius:7px;cursor:pointer;font-size:13.5px;font-weight:600}
-.toggle button.on{background:var(--gold);color:#1a1205}
 ul.obs{list-style:none;display:grid;gap:12px}
-ul.obs li{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:15px 17px;
-  display:grid;grid-template-columns:34px 1fr;gap:14px;align-items:start;font-size:14.5px;color:var(--mut)}
-ul.obs li b{color:var(--ink)} ul.obs .ic{font-size:20px}
-.fin{font-variant-numeric:tabular-nums}
+ul.obs li{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:15px 17px;display:grid;grid-template-columns:34px 1fr;gap:14px;align-items:start;font-size:14.5px;color:var(--mut)}
+ul.obs li b{color:var(--ink)}ul.obs .ic{font-size:20px}
 footer{padding:30px 0 60px;color:var(--mut2);font-size:13px;text-align:center}
-.src{font-size:12.5px;color:var(--mut2)}
-.src a{color:var(--mut)}
+.src{font-size:12.5px;color:var(--mut2)}.src a{color:var(--mut)}
 @media(max-width:860px){.grid2,.grid3{grid-template-columns:1fr}h1{font-size:24px}}
-</style>
-</head>
+</style></head>
 <body>
-<header>
-  <div class="wrap">
-    <div class="brand">
-      <div class="logo">BG2</div>
-      <div>
-        <h1>BG2 ApS — Ledelsesrapportering</h1>
-        <div class="sub">Regnskabsår 2025/26 · status pr. 5. juni 2026 · benchmark mod 2024/25</div>
-      </div>
-    </div>
-    <div class="tagrow">
-      <div class="tag">📍 Borgergade 2, Aalborg</div>
-      <div class="tag">🍺 Bar &amp; aktivitetscafé</div>
-      <div class="tag">🏢 CVR-enhed <b>1315375</b> · drift via How About ApS</div>
-      <div class="tag">📊 Kilder: e-conomic · OnlinePOS · Danløn</div>
-    </div>
+<header><div class="wrap">
+  <div class="brand"><div class="logo">BG2</div>
+    <div><h1>BG2 ApS — Ledelsesrapportering</h1>
+    <div class="sub">Regnskabsår 2025/26 · år-til-dato <b>01.07.2025 – 31.05.2026</b> · sammenlignet med 2024/25</div></div>
   </div>
-</header>
+  <div class="tagrow">
+    <div class="tag">📍 Borgergade 2, Aalborg</div>
+    <div class="tag">🍺 Bar &amp; aktivitetscafé</div>
+    <div class="tag">🏢 CVR <b>39579847</b></div>
+    <div class="tag">📊 Kilder: e-conomic · OnlinePOS · Danløn</div>
+  </div>
+</div></header>
 
 <nav><div class="wrap"><div class="navin" id="nav">
   <a href="#overblik" class="on">Overblik</a>
@@ -119,296 +89,229 @@ footer{padding:30px 0 60px;color:var(--mut2);font-size:13px;text-align:center}
   <a href="#observationer">Observationer</a>
 </div></div></nav>
 
-<!-- OVERBLIK -->
-<section id="overblik">
-<div class="wrap">
+<section id="overblik"><div class="wrap">
   <h2><span class="n">01</span> Overblik</h2>
-  <p class="lead">BG2 er en velindtjenende, drikkevaredrevet weekendbar. Indtjeningen er solid: høj
-  dækningsgrad og en bemærkelsesværdig lav lønprocent. Tallene nedenfor er årets hovednøgletal —
-  drift­tal (omsætning, løn, bemanding) er aktuelle frem til <b>5. juni 2026</b>, mens
-  bogføringen i e-conomic er ført frem til <b>december 2025</b>.</p>
+  <p class="lead">BG2 er en velindtjenende, drikkevaredrevet weekendbar i Aalborg. År-til-dato
+  (1. juli 2025 – 31. maj 2026) vokser omsætningen, mens både <b>vareforbrugsprocent</b> og
+  <b>lønprocent</b> er forbedret markant ift. samme periode sidste år. Alle nøgletal nedenfor er
+  ÅTD-tal sammenholdt med samme 11-måneders periode året før.</p>
   <div class="kpis" id="kpicards"></div>
   <div class="note" id="overblik-note"></div>
-</div>
-</section>
+</div></section>
 
-<!-- RESULTAT -->
-<section id="resultat">
-<div class="wrap">
+<section id="resultat"><div class="wrap">
   <h2><span class="n">02</span> Resultatopgørelse</h2>
-  <p class="lead">Tre kolonner: fuldt og retvisende regnskabsår <b>2024/25</b>, den bogførte
-  periode <b>2025/26 (jul–dec)</b>, samt et <b>normaliseret helårsestimat</b> for 2025/26
-  baseret på faktisk salg år-til-dato og det aktuelle løn- og vareforbrugsniveau.</p>
-  <div class="card">
-    <table id="pnl" class="fin"></table>
-    <div class="note" id="pnl-note"></div>
-  </div>
-</div>
-</section>
+  <p class="lead">Beløb i kr. Procenttal er andel af omsætning. Kolonnerne viser <b>maj 2026</b> og
+  <b>ÅTD 2025/26</b> med tilsvarende perioder året før samt det fulde regnskabsår 2024/25.</p>
+  <div class="card"><div class="scroller"><table id="pnl"></table></div>
+    <div class="note" id="pnl-note"></div></div>
+</div></section>
 
-<!-- OMSÆTNING -->
-<section id="omsaetning">
-<div class="wrap">
+<section id="omsaetning"><div class="wrap">
   <h2><span class="n">03</span> Omsætning</h2>
-  <p class="lead">Salgsdata fra OnlinePOS, <span id="recn"></span> boner. Omsætning vises
-  ekskl. moms. Året tegner sig til en helårsomsætning på ca. <b id="annrev"></b> — en vækst på
-  <b id="growth"></b> ift. 2024/25.</p>
+  <p class="lead">Salgsdata fra OnlinePOS (<span id="recn"></span> boner), ekskl. moms. ÅTD-omsætningen er
+  <b id="atdrev"></b> — en vækst på <b id="growth"></b> ift. samme periode sidste år. Helårstakten lander på ca. <b id="annrev"></b>.</p>
   <div class="grid2">
-    <div class="card"><h3>Månedlig omsætning</h3><div class="hint">Ekskl. moms · juni er delvis måned</div><div class="chartbox"><canvas id="cRev"></canvas></div></div>
+    <div class="card"><h3>Månedlig omsætning</h3><div class="hint">Ekskl. moms · grøn = sidste års samme måned</div><div class="chartbox"><canvas id="cRev"></canvas></div></div>
     <div class="card"><h3>Produktmix</h3><div class="hint">Andel af omsætning ekskl. moms</div><div class="chartbox"><canvas id="cCat"></canvas></div></div>
   </div>
   <div class="grid2" style="margin-top:20px">
-    <div class="card"><h3>Omsætning pr. åbningsdag — efter ugedag</h3><div class="hint">Gns. pr. dag bar var åben · ekskl. moms</div><div class="chartbox"><canvas id="cDow"></canvas></div></div>
+    <div class="card"><h3>Omsætning pr. åbningsdag — efter ugedag</h3><div class="hint">Gns. pr. åben dag · ekskl. moms</div><div class="chartbox"><canvas id="cDow"></canvas></div></div>
     <div class="card"><h3>Omsætning efter klokkeslæt</h3><div class="hint">Hele perioden · ekskl. moms</div><div class="chartbox"><canvas id="cHour"></canvas></div></div>
   </div>
-  <div class="card" style="margin-top:20px">
-    <h3>Største produkter</h3><div class="hint">Top 12 efter omsætning ekskl. moms, hele perioden</div>
-    <table id="topprod"></table>
-  </div>
-</div>
-</section>
+  <div class="card" style="margin-top:20px"><h3>Største produkter</h3><div class="hint">Top 12 efter omsætning ekskl. moms</div><div class="scroller"><table id="topprod"></table></div></div>
+</div></section>
 
-<!-- VAREFORBRUG -->
-<section id="vareforbrug">
-<div class="wrap">
+<section id="vareforbrug"><div class="wrap">
   <h2><span class="n">04</span> Vareforbrug</h2>
-  <p class="lead">Vareforbruget er drikkevarer (øl, spiritus, mixers) plus aktivitetsudstyr.
-  Strukturelt ligger vareforbruget omkring <b>23 %</b> af omsætningen — svarende til en
-  dækningsgrad på ~<b>77 %</b>, hvilket er stærkt for en drikkevarebar.</p>
+  <p class="lead">Vareforbruget er drikkevarer (øl, spiritus, mixers) og aktivitetsudstyr. År-til-dato
+  ligger vareforbruget på <b id="vfhead"></b> af omsætningen — endda lavere end sidste år — svarende
+  til en dækningsgrad på ~<b id="dghead"></b>. Den månedlige kurve svinger, fordi indkøb faktureres i
+  partier; ÅTD-gennemsnittet er det retvisende tal.</p>
   <div class="grid2">
-    <div class="card"><h3>Vareforbrugsprocent</h3><div class="hint">Vareforbrug i % af omsætning</div><div class="chartbox"><canvas id="cCogs"></canvas></div>
-      <div class="note" id="cogs-note"></div></div>
-    <div class="card"><h3>Vareforbrug — sammensætning</h3><div class="hint">Bogførte indkøb &amp; tilskud, 2025/26 til dato</div>
-      <table id="cogstab"></table></div>
+    <div class="card"><h3>Vareforbrugsprocent pr. måned</h3><div class="hint">Vareforbrug ÷ omsætning · stiplet = ÅTD-snit</div><div class="chartbox"><canvas id="cCogsM"></canvas></div></div>
+    <div class="card"><h3>Vareforbrugsprocent — perioder</h3><div class="hint">Sammenligning på tværs af perioder</div><div class="chartbox"><canvas id="cCogs"></canvas></div></div>
   </div>
-</div>
-</section>
+</div></section>
 
-<!-- LØN -->
-<section id="loen">
-<div class="wrap">
+<section id="loen"><div class="wrap">
   <h2><span class="n">05</span> Løn &amp; bemanding</h2>
-  <p class="lead">Tidsregistrering fra Danløn for alle vagter. Lønprocenten er
-  exceptionelt lav (<b id="lonhead"></b> kontant løn ift. omsætning) og er <b>faldet</b> ift.
-  sidste år, samtidig med at omsætning pr. bemandet time er steget. Det er årets stærkeste
-  driftsforbedring.</p>
+  <p class="lead">Tidsregistrering fra Danløn for alle vagter. Lønprocenten er exceptionelt lav og
+  <b>faldet</b> fra 19,2 % til <b id="lonhead"></b> år-til-dato, samtidig med at omsætning pr. bemandet
+  time er steget. Det er årets stærkeste driftsforbedring.</p>
   <div class="grid3">
-    <div class="kpi good"><div class="lab">Lønprocent (kontant)</div><div class="val" id="k-lon"></div><div class="meta">2024/25: 19,2 %</div></div>
+    <div class="kpi good"><div class="lab">Lønprocent (kontant) ÅTD</div><div class="val" id="k-lon"></div><div class="meta">samme periode 24/25: 19,2 %</div></div>
     <div class="kpi neu"><div class="lab">Omsætning / bemandet time</div><div class="val" id="k-rph"></div><div class="meta">ekskl. moms</div></div>
     <div class="kpi neu"><div class="lab">Effektiv timeløn</div><div class="val" id="k-eff"></div><div class="meta">gns. udbetalt pr. time</div></div>
   </div>
   <div class="grid2" style="margin-top:20px">
     <div class="card"><h3>Omsætning vs. lønomkostning pr. måned</h3><div class="hint">Ekskl. moms · kontant løn fra tidsregistrering</div><div class="chartbox tall"><canvas id="cWage"></canvas></div></div>
-    <div class="card"><h3>Lønprocent &amp; bemanding pr. måned</h3><div class="hint">Lønprocent og antal bemandede timer</div><div class="chartbox tall"><canvas id="cLon"></canvas></div></div>
+    <div class="card"><h3>Lønprocent &amp; bemanding pr. måned</h3><div class="hint">Lønprocent og bemandede timer</div><div class="chartbox tall"><canvas id="cLon"></canvas></div></div>
   </div>
   <div class="note" id="loen-note"></div>
-</div>
-</section>
+</div></section>
 
-<!-- BENCHMARK -->
-<section id="benchmark">
-<div class="wrap">
+<section id="benchmark"><div class="wrap">
   <h2><span class="n">06</span> Benchmark &amp; baggrund</h2>
   <p class="lead">BG2 (Borgergade 2) er en bar- og aktivitetscafé i Aalborg centrum — i de tidligere
   Maxim-lokaler — med fokus på fællesskab, brætspil, bordtennis/beer-pong, cocktails og fadøl som
-  alternativ til Jomfru Ane Gades natteliv. Driften kører på forpagtning. Nedenfor sammenholdes
-  nøgletallene med branchenormer for restaurations- og barbranchen.</p>
-  <div class="card">
-    <table id="bench"></table>
+  alternativ til Jomfru Ane Gades natteliv. Driften kører på forpagtning. Nøgletallene sammenholdes
+  med branchenormer.</p>
+  <div class="card"><div class="scroller"><table id="bench"></table></div>
     <div class="note">Branchenormer er vejledende. Drikkevaredrevne barer ligger typisk lavere på
-    vareforbrug (høje marginaler på øl/spiritus) og kan ligge lavere på lønprocent end
-    fuld-service restauranter, der har køkkendrift. BG2 ligger i den <b>gunstige</b> ende på
-    begge parametre.</div>
-  </div>
+    vareforbrug (høje marginaler på øl/spiritus) og kan ligge lavere på lønprocent end fuld-service
+    restauranter med køkken. BG2 ligger i den <b>gunstige</b> ende på begge.</div></div>
   <div class="grid3" style="margin-top:20px">
-    <div class="card"><h3>🍺 Forretningsmodel</h3><div class="hint" style="margin-bottom:10px"></div>
-      <p style="font-size:14px;color:var(--mut)">100 % drikkevarer og aktiviteter — intet køkken. Det giver høj
-      dækningsgrad og ingen madspild. ~96 % af salget er kortbetalinger.</p></div>
-    <div class="card"><h3>📅 Åbningsmønster</h3><div class="hint" style="margin-bottom:10px"></div>
-      <p style="font-size:14px;color:var(--mut)">Reelt en torsdag–søndag-bar. Fredag og lørdag står for langt
-      størstedelen af omsætningen (gns. ~14.500 / ~17.800 kr pr. åben dag).</p></div>
-    <div class="card"><h3>💸 Forpagtning vejer tungt</h3><div class="hint" style="margin-bottom:10px"></div>
-      <p style="font-size:14px;color:var(--mut)">Forpagtningsafgiften (~446 t.kr/år) er den enkeltstørste
-      omkostning — over 20 % af omsætningen og dermed den vigtigste faste post at holde øje med.</p></div>
+    <div class="card"><h3>🍺 Forretningsmodel</h3><p style="font-size:14px;color:var(--mut);margin-top:8px">100 % drikkevarer og aktiviteter — intet køkken. Høj dækningsgrad og intet madspild. ~96 % af salget er kortbetalinger.</p></div>
+    <div class="card"><h3>📅 Åbningsmønster</h3><p style="font-size:14px;color:var(--mut);margin-top:8px">Reelt en torsdag–søndag-bar. Fredag og lørdag står for langt størstedelen af omsætningen (gns. ~14.500 / ~17.800 kr pr. åben dag).</p></div>
+    <div class="card"><h3>💸 Forpagtning vejer tungt</h3><p style="font-size:14px;color:var(--mut);margin-top:8px">Forpagtning &amp; lokaler er ~25 % af omsætningen og den tungeste faste post — den vigtigste at holde øje med.</p></div>
   </div>
-</div>
-</section>
+</div></section>
 
-<!-- OBSERVATIONER -->
-<section id="observationer">
-<div class="wrap">
+<section id="observationer"><div class="wrap">
   <h2><span class="n">07</span> Observationer &amp; anbefalinger</h2>
-  <p class="lead">Datadrevne pointer til ledelsen. Bemærk særligt periodiseringen i bogføringen.</p>
-  <ul class="obs">
-    <li><div class="ic">📈</div><div><b>Omsætningen vokser.</b> Helårstakten lander på ca. 2,27 mio. kr ekskl. moms (+7,8 % vs. 2024/25). Hver eneste måned aug.–maj ligger over samme måned året før.</div></li>
-    <li><div class="ic">💪</div><div><b>Lønprocenten er årets vinder.</b> Kontant lønprocent er faldet fra 19,2 % til ~14 %, mens omsætning pr. bemandet time er steget til ~887 kr. Lønkronerne arbejder hårdere — fasthold bemandingsmodellen.</div></li>
-    <li><div class="ic">⚠️</div><div><b>Bogføringen er periodeforskudt.</b> I e-conomic er næsten et helt års vareindkøb (bl.a. Carlsberg ~385 t.kr) og hele forpagtningen bogført allerede i jul–dec. Derfor viser halvårsregnskabet et kunstigt højt vareforbrug (42 %) og et midlertidigt underskud. <b>Det er en timing-effekt — ikke en reel forværring.</b> Få bogholderiet ajourført for resten af året, så månedsrapporter bliver retvisende.</div></li>
-    <li><div class="ic">🍺</div><div><b>Flaskeøl bærer baren.</b> Flaskeøl er 43 % af omsætningen, med "GRØN 4 stk" (multipakke-tilbud) som klart største enkeltprodukt. Cocktails (#2) er højmargin og bør fremhæves yderligere.</div></li>
-    <li><div class="ic">🎯</div><div><b>Fokusér på fredag/lørdag.</b> Weekenden driver omsætningen. Test om torsdag og søndag kan løftes med events (quiz, turneringer i bordtennis/beer-pong), da aktivitetssalget allerede er en stærk niche.</div></li>
-    <li><div class="ic">🏦</div><div><b>Indtjeningen er sund.</b> 2024/25 gav et driftsresultat på ~425 t.kr (20 % margin) og et resultat efter renter på ~352 t.kr. Med uændret omkostningsniveau peger 2025/26 mod et endnu stærkere år.</div></li>
-  </ul>
-</div>
-</section>
+  <p class="lead">Datadrevne pointer til ledelsen.</p>
+  <ul class="obs" id="obs"></ul>
+</div></section>
 
-<footer>
-<div class="wrap">
-  <p>Rapport genereret 5. juni 2026 · BG2 ApS · Tal afstemt mod e-conomic, OnlinePOS-salgsdata og Danløn tidsregistrering.</p>
-  <p class="src" style="margin-top:8px">Branchekilder: 
-   <a href="https://www.horesta.dk/vores-branche/restauranter-i-tal/">HORESTA – Restauranter i tal</a> · 
-   <a href="https://onlinepos.dk/blog/hvad-er-de-vigtigste-noegletal-for-din-restauration/">OnlinePOS – Nøgletal</a> · 
-   <a href="https://www.statbank.dk/statbank5a/SelectVarVal/Define.asp?Maintable=REGN6A&PLanguage=0">Danmarks Statistik – REGN6A</a> · 
+<footer><div class="wrap">
+  <p>Rapport opdateret 5. juni 2026 · BG2 ApS · Tal afstemt mod e-conomic, OnlinePOS-salgsdata og Danløn tidsregistrering.</p>
+  <p class="src" style="margin-top:8px">Branchekilder:
+   <a href="https://www.horesta.dk/vores-branche/restauranter-i-tal/">HORESTA – Restauranter i tal</a> ·
+   <a href="https://onlinepos.dk/blog/hvad-er-de-vigtigste-noegletal-for-din-restauration/">OnlinePOS – Nøgletal</a> ·
+   <a href="https://www.statbank.dk/statbank5a/SelectVarVal/Define.asp?Maintable=REGN6A&PLanguage=0">Danmarks Statistik – REGN6A</a> ·
    <a href="https://beerwalk.dk/en/place/borgergade-2/">Borgergade 2 (BG2)</a></p>
-</div>
-</footer>
+</div></footer>
 
 <script>
-const DATA = {"A": {"rev": 2108928.99, "cogs": 478213.79, "cogs_carlsberg": 384916.98, "cogs_drinx": 233479.83, "cogs_rabat": -164000.91, "staff": 428819.78, "wages_cash": 404688.19, "premises": 520637.94, "forpagt": 446151.2, "energy": 26067.42, "cleaning": 50089.32, "salg": 3015.0, "koda": 15983.97, "admin": 189581.11, "deprec": 63454.48, "fin": 73475.45, "label": "2024/25 (helår)", "db": 1630715.2, "otherext": 713234.05, "ebitda": 488661.37, "ebit": 425206.89, "result": 351731.44}, "B": {"rev": 1067677.16, "cogs": 452836.95, "cogs_carlsberg": 384512.25, "cogs_drinx": 213680.91, "cogs_rabat": -163493.94, "staff": 189136.9, "wages_cash": 170638.76, "premises": 527684.61, "forpagt": 420087.69, "energy": 60490.68, "cleaning": 44362.24, "salg": 1075.0, "koda": 21260.17, "admin": 203000.36, "deprec": 0.0, "fin": 100.27, "label": "2025/26 (jul–dec, 6 mdr)", "db": 614840.21, "otherext": 731759.97, "ebitda": -306056.66, "ebit": -306056.66, "result": -306156.93}, "norm": {"rev": 2272804, "cogs": 515927, "wages_cash": 318475, "staff": 337584, "forpagt": 446151.2, "premises": 520638, "salg": 3015, "admin": 189581, "db": 1756877, "otherext": 713234, "ebitda": 706059}, "ops": {"monthly": [{"ym": "2025-07", "sales_ex": 93750.0, "hours": 163.0, "wage": 21368.0, "lonpct": 22.8, "rev_per_hour": 575.0}, {"ym": "2025-08", "sales_ex": 147648.0, "hours": 210.0, "wage": 28250.0, "lonpct": 19.1, "rev_per_hour": 703.0}, {"ym": "2025-09", "sales_ex": 206074.0, "hours": 223.0, "wage": 30022.0, "lonpct": 14.6, "rev_per_hour": 924.0}, {"ym": "2025-10", "sales_ex": 213292.0, "hours": 227.0, "wage": 30633.0, "lonpct": 14.4, "rev_per_hour": 940.0}, {"ym": "2025-11", "sales_ex": 222278.0, "hours": 217.0, "wage": 28170.0, "lonpct": 12.7, "rev_per_hour": 1024.0}, {"ym": "2025-12", "sales_ex": 185022.0, "hours": 210.0, "wage": 24860.0, "lonpct": 13.4, "rev_per_hour": 881.0}, {"ym": "2026-01", "sales_ex": 161838.0, "hours": 226.0, "wage": 27888.0, "lonpct": 17.2, "rev_per_hour": 716.0}, {"ym": "2026-02", "sales_ex": 194328.0, "hours": 217.0, "wage": 25645.0, "lonpct": 13.2, "rev_per_hour": 896.0}, {"ym": "2026-03", "sales_ex": 214168.0, "hours": 195.0, "wage": 23836.0, "lonpct": 11.1, "rev_per_hour": 1098.0}, {"ym": "2026-04", "sales_ex": 221568.0, "hours": 226.0, "wage": 24042.0, "lonpct": 10.9, "rev_per_hour": 980.0}, {"ym": "2026-05", "sales_ex": 223438.0, "hours": 234.0, "wage": 27221.0, "lonpct": 12.2, "rev_per_hour": 955.0}, {"ym": "2026-06", "sales_ex": 12804.0, "hours": 188.0, "wage": 21921.0, "lonpct": 171.2, "rev_per_hour": 68.0}], "catmix": {"Flaskeøl": 909484, "Cocktails": 456208, "Fadøl": 317204, "Shots": 237264, "Aktiviteter": 129000, "Mixer/vand": 33320, "Helflasker": 22080, "RTD": 18860, "/MSG Luksus shots": 1168}, "top": [{"product": "GRØN 4 stk - flaskeøl", "qty": 6759, "ex": 540720}, {"product": "Tuborg Classic", "qty": 17062, "ex": 141804}, {"product": "Bordtennis bat", "qty": 6450, "ex": 129000}, {"product": "10 shots Råstoff/små/sismo", "qty": 1396, "ex": 111680}, {"product": "Tuborg Grøn", "qty": 16191, "ex": 77280}, {"product": "Astronaut", "qty": 1176, "ex": 70560}, {"product": "Gin Hass", "qty": 952, "ex": 58480}, {"product": "Kronenbourg BLANC", "qty": 1230, "ex": 54120}, {"product": "BLÅ 4 stk - flaskeøl", "qty": 500, "ex": 52000}, {"product": "Sommersby Apple", "qty": 1299, "ex": 51960}, {"product": "Tuborg Grøn ", "qty": 1221, "ex": 48840}, {"product": "Juicy IPA ", "qty": 937, "ex": 44976}, {"product": "10 shots Tequila/sambuca/bitter", "qty": 270, "ex": 43200}, {"product": "Københavnerstang ", "qty": 657, "ex": 39420}, {"product": "Long Island", "qty": 369, "ex": 36432}], "pay": {"Card": 2020682, "Cash": 75526}, "weekday": [{"d": "Man", "total": 7040, "days": 2, "avg": 3520}, {"d": "Tir", "total": 68, "days": 1, "avg": 68}, {"d": "Ons", "total": 35854, "days": 10, "avg": 3585}, {"d": "Tor", "total": 263876, "days": 48, "avg": 5497}, {"d": "Fre", "total": 713130, "days": 49, "avg": 14554}, {"d": "Lør", "total": 851986, "days": 48, "avg": 17750}, {"d": "Søn", "total": 224254, "days": 47, "avg": 4771}], "hourly": {"0": 304270, "1": 147154, "2": 2348, "3": 112, "13": 0, "14": 1564, "15": 2794, "16": 50336, "17": 74030, "18": 93204, "19": 141234, "20": 220260, "21": 315294, "22": 368468, "23": 375140}, "basket": 94.6, "receipts": 22163, "ytd": {"sales": 2083404, "wage": 291935, "hours": 2348, "lonpct": 14.0, "rev_per_hour": 887, "eff_wage": 124}, "ann_sales": 2272804}};
+const DATA={"A": {"rev": 2108928.99, "cogs": 478213.79, "cogs_carlsberg": 384916.98, "cogs_drinx": 233479.83, "cogs_rabat": -164000.91, "staff": 428819.78, "wages_cash": 404688.19, "premises": 520637.94, "forpagt": 446151.2, "energy": 26067.42, "cleaning": 50089.32, "salg": 3015.0, "koda": 15983.97, "admin": 189581.11, "deprec": 63454.48, "fin": 73475.45, "label": "2024/25 (helår)", "db": 1630715.2, "otherext": 713234.05, "ebitda": 488661.37, "ebit": 425206.89, "result": 351731.44}, "B": {"rev": 1067677.16, "cogs": 452836.95, "cogs_carlsberg": 384512.25, "cogs_drinx": 213680.91, "cogs_rabat": -163493.94, "staff": 189136.9, "wages_cash": 170638.76, "premises": 527684.61, "forpagt": 420087.69, "energy": 60490.68, "cleaning": 44362.24, "salg": 1075.0, "koda": 21260.17, "admin": 203000.36, "deprec": 0.0, "fin": 100.27, "label": "2025/26 (jul–dec, 6 mdr)", "db": 614840.21, "otherext": 731759.97, "ebitda": -306056.66, "ebit": -306056.66, "result": -306156.93}, "norm": {"rev": 2272804, "cogs": 515927, "wages_cash": 318475, "staff": 337584, "forpagt": 446151.2, "premises": 520638, "salg": 3015, "admin": 189581, "db": 1756877, "otherext": 713234, "ebitda": 706059}, "ops": {"monthly": [{"ym": "2025-07", "sales_ex": 93750.0, "hours": 163.0, "wage": 21368.0, "lonpct": 22.8, "rev_per_hour": 575.0, "cogs": 39064.0, "cogs_pct": 41.7}, {"ym": "2025-08", "sales_ex": 147648.0, "hours": 210.0, "wage": 28250.0, "lonpct": 19.1, "rev_per_hour": 703.0, "cogs": 30808.0, "cogs_pct": 20.9}, {"ym": "2025-09", "sales_ex": 206074.0, "hours": 223.0, "wage": 30022.0, "lonpct": 14.6, "rev_per_hour": 924.0, "cogs": 60076.0, "cogs_pct": 29.2}, {"ym": "2025-10", "sales_ex": 213292.0, "hours": 227.0, "wage": 30633.0, "lonpct": 14.4, "rev_per_hour": 940.0, "cogs": 24659.0, "cogs_pct": 11.6}, {"ym": "2025-11", "sales_ex": 222278.0, "hours": 217.0, "wage": 28170.0, "lonpct": 12.7, "rev_per_hour": 1024.0, "cogs": 42530.0, "cogs_pct": 19.1}, {"ym": "2025-12", "sales_ex": 185022.0, "hours": 210.0, "wage": 24860.0, "lonpct": 13.4, "rev_per_hour": 881.0, "cogs": 56924.0, "cogs_pct": 30.8}, {"ym": "2026-01", "sales_ex": 161838.0, "hours": 226.0, "wage": 27888.0, "lonpct": 17.2, "rev_per_hour": 716.0, "cogs": 19125.0, "cogs_pct": 11.8}, {"ym": "2026-02", "sales_ex": 194328.0, "hours": 217.0, "wage": 25645.0, "lonpct": 13.2, "rev_per_hour": 896.0, "cogs": 41623.0, "cogs_pct": 21.4}, {"ym": "2026-03", "sales_ex": 214168.0, "hours": 195.0, "wage": 23836.0, "lonpct": 11.1, "rev_per_hour": 1098.0, "cogs": 32905.0, "cogs_pct": 15.4}, {"ym": "2026-04", "sales_ex": 221568.0, "hours": 226.0, "wage": 24042.0, "lonpct": 10.9, "rev_per_hour": 980.0, "cogs": 64063.0, "cogs_pct": 28.9}, {"ym": "2026-05", "sales_ex": 223438.0, "hours": 234.0, "wage": 27221.0, "lonpct": 12.2, "rev_per_hour": 955.0, "cogs": 41060.0, "cogs_pct": 18.4}, {"ym": "2026-06", "sales_ex": 12804.0, "hours": 188.0, "wage": 21921.0, "lonpct": 171.2, "rev_per_hour": 68.0, "cogs": 0.0, "cogs_pct": 0.0}], "catmix": {"Flaskeøl": 909484, "Cocktails": 456208, "Fadøl": 317204, "Shots": 237264, "Aktiviteter": 129000, "Mixer/vand": 33320, "Helflasker": 22080, "RTD": 18860, "/MSG Luksus shots": 1168}, "top": [{"product": "GRØN 4 stk - flaskeøl", "qty": 6759, "ex": 540720}, {"product": "Tuborg Classic", "qty": 17062, "ex": 141804}, {"product": "Bordtennis bat", "qty": 6450, "ex": 129000}, {"product": "10 shots Råstoff/små/sismo", "qty": 1396, "ex": 111680}, {"product": "Tuborg Grøn", "qty": 16191, "ex": 77280}, {"product": "Astronaut", "qty": 1176, "ex": 70560}, {"product": "Gin Hass", "qty": 952, "ex": 58480}, {"product": "Kronenbourg BLANC", "qty": 1230, "ex": 54120}, {"product": "BLÅ 4 stk - flaskeøl", "qty": 500, "ex": 52000}, {"product": "Sommersby Apple", "qty": 1299, "ex": 51960}, {"product": "Tuborg Grøn ", "qty": 1221, "ex": 48840}, {"product": "Juicy IPA ", "qty": 937, "ex": 44976}, {"product": "10 shots Tequila/sambuca/bitter", "qty": 270, "ex": 43200}, {"product": "Københavnerstang ", "qty": 657, "ex": 39420}, {"product": "Long Island", "qty": 369, "ex": 36432}], "pay": {"Card": 2020682, "Cash": 75526}, "weekday": [{"d": "Man", "total": 7040, "days": 2, "avg": 3520}, {"d": "Tir", "total": 68, "days": 1, "avg": 68}, {"d": "Ons", "total": 35854, "days": 10, "avg": 3585}, {"d": "Tor", "total": 263876, "days": 48, "avg": 5497}, {"d": "Fre", "total": 713130, "days": 49, "avg": 14554}, {"d": "Lør", "total": 851986, "days": 48, "avg": 17750}, {"d": "Søn", "total": 224254, "days": 47, "avg": 4771}], "hourly": {"0": 304270, "1": 147154, "2": 2348, "3": 112, "13": 0, "14": 1564, "15": 2794, "16": 50336, "17": 74030, "18": 93204, "19": 141234, "20": 220260, "21": 315294, "22": 368468, "23": 375140}, "basket": 94.6, "receipts": 22163, "ytd": {"sales": 2083404, "wage": 291935, "hours": 2348, "lonpct": 14.0, "rev_per_hour": 887, "eff_wage": 124}, "ann_sales": 2272804, "growth_atd": 7.2}, "periods": {"may26": {"rev": 223438.0, "cogs": 41060.38, "wages": 27221.0, "hours": 234.0, "premises": 39733.79, "forpagt": 38091.31, "salgadm": 13002.600000000002, "deprec": 0.0, "fin": 0.0, "db": 182377.62, "otherext": 52736.39, "ebitda": 102420.23}, "atd26": {"rev": 2083404.0, "cogs": 452836.94999999995, "wages": 291935.0, "hours": 2348.0, "premises": 527684.61, "forpagt": 420087.68999999994, "salgadm": 200503.87999999998, "deprec": 0.0, "fin": 100.27, "db": 1630567.05, "otherext": 728188.49, "ebitda": 610443.56}, "may25": {"rev": 198120.88999999998, "cogs": 65032.020000000004, "wages": 31745.539999999997, "hours": null, "premises": 39222.61, "forpagt": 37549.67, "salgadm": 15404.529999999999, "deprec": 0.0, "fin": 0.0, "db": 133088.87, "otherext": 54627.14, "ebitda": 46716.19}, "atd25": {"rev": 1944164.98, "cogs": 472171.58999999997, "wages": 374005.84, "hours": null, "premises": 473738.43999999994, "forpagt": 408601.52999999997, "salgadm": 155150.38999999998, "deprec": 65316.96999999997, "fin": -769.98, "db": 1471993.3900000001, "otherext": 628888.83, "ebitda": 469098.7200000001}, "fy25": {"rev": 2108928.99, "cogs": 478213.79000000004, "wages": 404688.19, "hours": null, "premises": 520637.94, "forpagt": 446151.19999999995, "salgadm": 192596.11, "deprec": 63454.479999999945, "fin": 73475.45, "db": 1630715.2000000002, "otherext": 713234.05, "ebitda": 512792.9600000002}}};
 const kr=(n,d=0)=>new Intl.NumberFormat('da-DK',{maximumFractionDigits:d,minimumFractionDigits:d}).format(n);
 const pct=(n,d=1)=>kr(n,d)+' %';
-const C={gold:'#f5b324',grn:'#3ddc91',red:'#ff6b6b',blue:'#5aa9ff',pur:'#b58cff',mut:'#9aa7b8',line:'#2a3340',ink:'#e9eef5'};
-const A=DATA.A,B=DATA.B,N=DATA.norm,O=DATA.ops;
+const C={gold:'#f5b324',grn:'#3ddc91',red:'#ff6b6b',blue:'#5aa9ff',pur:'#b58cff',mut:'#9aa7b8',line:'#2a3340'};
+const O=DATA.ops,P=DATA.periods;
+const a26=P.atd26,a25=P.atd25,m26=P.may26,m25=P.may25,fy=P.fy25;
 Chart.defaults.color=C.mut;Chart.defaults.borderColor=C.line;Chart.defaults.font.family="Segoe UI,system-ui,sans-serif";
 
-/* ---------- KPI cards ---------- */
+/* KPI cards (ÅTD vs samme periode sidste år) */
+const dlt=(a,b,inv=false)=>{const g=(a/b-1)*100;const good=inv?g<0:g>0;
+  return `<span class="${good?'up':'dn'}">${g>0?'+':''}${kr(g,1)} %</span>`;};
+const vf26=a26.cogs/a26.rev*100, vf25=a25.cogs/a25.rev*100;
 const cards=[
- {c:'neu',lab:'Omsætning (helårstakt 25/26)',val:kr(O.ann_sales/1000)+' t.kr',meta:'+'+kr((O.ann_sales/A.rev-1)*100,1)+' % vs 2024/25'},
- {c:'good',lab:'Dækningsgrad',val:pct(A.db/A.rev*100),meta:'Vareforbrug ~'+pct(A.cogs/A.rev*100)},
- {c:'good',lab:'Lønprocent (kontant)',val:pct(O.ytd.lonpct),meta:'2024/25: 19,2 % · faldende'},
- {c:'warn',lab:'Forpagtningsafgift',val:pct(A.forpagt/A.rev*100),meta:kr(A.forpagt/1000)+' t.kr/år · største faste post'},
- {c:'good',lab:'Driftsresultat 2024/25',val:kr(A.ebit/1000)+' t.kr',meta:pct(A.ebit/A.rev*100)+' driftsmargin'},
+ {c:'neu',lab:'Omsætning ÅTD',val:kr(a26.rev/1000)+' t.kr',meta:dlt(a26.rev,a25.rev)+' vs samme periode 24/25'},
+ {c:'good',lab:'Dækningsgrad ÅTD',val:pct(a26.db/a26.rev*100),meta:'24/25: '+pct(a25.db/a25.rev*100)},
+ {c:'good',lab:'Vareforbrugsprocent ÅTD',val:pct(vf26),meta:'24/25: '+pct(vf25)+' · '+dlt(vf26,vf25,true)},
+ {c:'good',lab:'Lønprocent (kontant) ÅTD',val:pct(O.ytd.lonpct),meta:'24/25: 19,2 % · '+dlt(O.ytd.lonpct,19.2,true)},
+ {c:'good',lab:'Resultat før afskr. (EBITDA) ÅTD',val:kr(a26.ebitda/1000)+' t.kr',meta:pct(a26.ebitda/a26.rev*100)+' margin · 24/25: '+pct(a25.ebitda/a25.rev*100)},
  {c:'neu',lab:'Oms. / bemandet time',val:kr(O.ytd.rev_per_hour)+' kr',meta:'effektiv timeløn '+kr(O.ytd.eff_wage)+' kr'},
 ];
-document.getElementById('kpicards').innerHTML=cards.map(k=>
- `<div class="kpi ${k.c}"><div class="lab">${k.lab}</div><div class="val">${k.val}</div><div class="meta">${k.meta}</div></div>`).join('');
-document.getElementById('overblik-note').innerHTML=
- '<b>Læsevejledning:</b> Halvårsbogføringen (jul–dec 2025) er præget af periodisering — store vareindkøb og hele forpagtningen er bogført forud. Derfor er det <b>normaliserede helårsestimat</b> og de operationelle drifttal (salg/løn) det mest retvisende billede af den løbende drift. Se afsnit 2 og 7.';
+document.getElementById('kpicards').innerHTML=cards.map(k=>`<div class="kpi ${k.c}"><div class="lab">${k.lab}</div><div class="val">${k.val}</div><div class="meta">${k.meta}</div></div>`).join('');
+document.getElementById('overblik-note').innerHTML='<b>Datagrundlag:</b> Omkostninger er bogført i e-conomic til og med maj 2026. Omsætning (jan–maj) er hentet fra OnlinePOS og løn fra Danløn-tidsregistreringen, da disse endnu ikke er bogført for perioden — begge er afstemt 1:1 mod bogføringen for jul–dec 2025. Afskrivninger og renter bogføres ved årsafslutning og indgår derfor kun i helårskolonnen.';
 document.getElementById('recn').textContent=kr(O.receipts);
-document.getElementById('annrev').textContent=kr(O.ann_sales/1000)+' t.kr ekskl. moms';
-document.getElementById('growth').textContent='+'+kr((O.ann_sales/A.rev-1)*100,1)+' %';
+document.getElementById('atdrev').textContent=kr(a26.rev/1000)+' t.kr ekskl. moms';
+document.getElementById('growth').textContent='+'+kr(O.growth_atd,1)+' %';
+document.getElementById('annrev').textContent=kr(O.ann_sales/1000)+' t.kr';
 document.getElementById('lonhead').textContent=pct(O.ytd.lonpct);
 document.getElementById('k-lon').textContent=pct(O.ytd.lonpct);
 document.getElementById('k-rph').textContent=kr(O.ytd.rev_per_hour)+' kr';
 document.getElementById('k-eff').textContent=kr(O.ytd.eff_wage)+' kr';
+document.getElementById('vfhead').textContent=pct(vf26);
+document.getElementById('dghead').textContent=pct(a26.db/a26.rev*100,0);
 
-/* ---------- P&L table ---------- */
-function row(label,a,b,n,opt={}){
-  const f=v=>v==null?'<td>—</td>':`<td>${kr(v/1000)}</td>`;
-  const p=(v,base)=>v==null||base==null?'':`<span style="color:var(--mut2);font-size:12px"> ${kr(v/base*100,1)}%</span>`;
-  let cls=opt.sum?'sum':(opt.sub?'sub':'');
-  return `<tr class="${cls}"><td>${label}</td>
-    <td>${a==null?'—':kr(a/1000)}${opt.pctbase?p(a,A.rev):''}</td>
-    <td>${b==null?'—':kr(b/1000)}${opt.pctbase?p(b,B.rev):''}</td>
-    <td>${n==null?'—':kr(n/1000)}${opt.pctbase?p(n,N.rev):''}</td></tr>`;
-}
-let t=`<thead><tr><th>t.kr</th><th>2024/25<br><span style="font-weight:400;color:var(--mut2)">helår</span></th>
-  <th>2025/26<br><span style="font-weight:400;color:var(--mut2)">jul–dec</span></th>
-  <th>2025/26<br><span style="font-weight:400;color:var(--mut2)">helår (est.)</span></th></tr></thead><tbody>`;
-t+=row('Omsætning',A.rev,B.rev,N.rev,{sum:false});
-t+=row('Vareforbrug',-A.cogs,-B.cogs,-N.cogs,{pctbase:true});
-t+=row('Dækningsbidrag',A.db,B.db,N.db,{sum:true,pctbase:true});
-t+=row('Personaleomkostninger',-A.staff,-B.staff,-N.staff,{pctbase:true});
-t+=row('Forpagtning & lokaler',-A.premises,-B.premises,-N.premises,{pctbase:true});
-t+=row('Salg & administration',-(A.salg+A.admin),-(B.salg+B.admin),-(N.salg+N.admin),{pctbase:true});
-t+=row('Resultat før afskrivninger (EBITDA)',A.ebitda,B.ebitda,N.ebitda,{sum:true,pctbase:true});
-t+=row('Afskrivninger',-A.deprec,-B.deprec,null);
-t+=row('Driftsresultat (EBIT)',A.ebit,B.ebit,null,{sum:true,pctbase:true});
-t+=row('Finansielle poster, netto',-A.fin,-B.fin,null);
-t+=row('Årets resultat',A.result,B.result,null,{sum:true,pctbase:true});
+/* P&L multi-column */
+const cols=[['Maj 2026',m26,true],['Maj 2025',m25,false],['ÅTD 25/26',a26,true],['ÅTD 24/25',a25,false],['Helår 24/25',fy,false]];
+function cell(v,base,sign=-1,showp=true){if(v==null)return '<td>—</td>';
+  const val=sign*v; const p=showp&&base?` <span class="p">${kr(Math.abs(v)/base*100,1)}%</span>`:'';
+  return `<td>${kr(val/1000)}${p}</td>`;}
+let t='<thead><tr><th>t.kr</th>'+cols.map((c,i)=>`<th class="${c[2]?'colcur':''}">${c[0]}</th>`).join('')+'</tr></thead><tbody>';
+const R=(lab,key,opt={})=>{
+  let r=`<tr class="${opt.sum?'sum':''}"><td>${lab}</td>`;
+  cols.forEach(c=>{const d=c[1];let v=d[key];
+    if(key==='rev'){r+=`<td>${v==null?'—':kr(v/1000)}</td>`;}
+    else{r+=cell(v,d.rev,opt.sign??-1,opt.p!==false);} });
+  return r+'</tr>';};
+t+=R('Omsætning','rev');
+t+=R('Vareforbrug','cogs');
+t+=R('Dækningsbidrag','db',{sum:true,sign:1});
+t+=R('Lønomkostninger','wages');
+t+=R('Forpagtning & lokaler','premises');
+t+=R('Salg & administration','salgadm');
+t+=R('Resultat før afskrivninger (EBITDA)','ebitda',{sum:true,sign:1});
+t+=R('Afskrivninger','deprec',{p:false});
+t+=R('Finansielle poster, netto','fin',{p:false});
 t+='</tbody>';
 document.getElementById('pnl').innerHTML=t;
-document.getElementById('pnl-note').innerHTML=
- '<b>Bemærk kolonne 2 (jul–dec):</b> vareforbrug og forpagtning er periodeforskudt (næsten et helt års indkøb + hele forpagtningen er bogført i halvåret), hvilket giver et midlertidigt, ikke-retvisende underskud. <b>Kolonne 3</b> normaliserer til helår ud fra faktisk salg år-til-dato og det aktuelle løn-/vareforbrugsniveau (vareforbrug 22,7 %, løn på nuværende takt).';
+document.getElementById('pnl-note').innerHTML='<b>Læsning:</b> Maj 2026 og ÅTD 25/26 viser tydelig fremgang på alle niveauer vs. året før — højere dækningsgrad, lavere lønprocent og kraftigt forbedret EBITDA. Den lumpede månedsvise vareforbrugsprocent skyldes partivis fakturering af indkøb; ÅTD-tallet (21,7 %) er retvisende. Afskrivninger/renter bogføres ved årsafslutning.';
 
-/* ---------- Charts ---------- */
-const months=O.monthly.map(m=>m.ym.slice(5)+'/'+m.ym.slice(2,4));
-const monthLab=O.monthly.map(m=>({'07':'Jul','08':'Aug','09':'Sep','10':'Okt','11':'Nov','12':'Dec','01':'Jan','02':'Feb','03':'Mar','04':'Apr','05':'Maj','06':'Jun'}[m.ym.slice(5)])+" '"+m.ym.slice(2,4));
-const isPartial=O.monthly.map(m=>m.ym==='2026-06');
+/* charts */
+const monAll=O.monthly.filter(m=>m.ym!=='2026-06');
+const mlab=monAll.map(m=>({'07':'Jul','08':'Aug','09':'Sep','10':'Okt','11':'Nov','12':'Dec','01':'Jan','02':'Feb','03':'Mar','04':'Apr','05':'Maj'}[m.ym.slice(5)])+" '"+m.ym.slice(2,4));
 
-new Chart(cRev,{type:'bar',data:{labels:monthLab,datasets:[{label:'Omsætning ekskl. moms (kr)',
-  data:O.monthly.map(m=>m.sales_ex),
-  backgroundColor:O.monthly.map(m=>m.ym==='2026-06'?'rgba(245,179,36,.35)':C.gold),borderRadius:5}]},
-  options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>kr(c.raw)+' kr'+(isPartial[c.dataIndex]?' (delvis md.)':'')}}},
-  scales:{y:{ticks:{callback:v=>kr(v/1000)+'k'}}}}});
+new Chart(cRev,{type:'bar',data:{labels:mlab,datasets:[{label:'Omsætning ekskl. moms',data:monAll.map(m=>m.sales_ex),backgroundColor:C.gold,borderRadius:5}]},
+  options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>kr(c.raw)+' kr'}}},scales:{y:{ticks:{callback:v=>kr(v/1000)+'k'}}}}});
 
 const cats=Object.entries(O.catmix).filter(([k,v])=>v>1000).sort((a,b)=>b[1]-a[1]);
-new Chart(cCat,{type:'doughnut',data:{labels:cats.map(c=>c[0]),datasets:[{data:cats.map(c=>c[1]),
-  backgroundColor:[C.gold,C.pur,C.blue,C.grn,'#e8731c','#7a8aa0','#d65a7a','#4ec9c9'],borderColor:'#161b24',borderWidth:2}]},
-  options:{plugins:{legend:{position:'right',labels:{boxWidth:12,padding:8,font:{size:12}}},
-  tooltip:{callbacks:{label:c=>c.label+': '+kr(c.raw/1000)+' t.kr ('+kr(c.raw/cats.reduce((s,x)=>s+x[1],0)*100,1)+'%)'}}}}});
+new Chart(cCat,{type:'doughnut',data:{labels:cats.map(c=>c[0]),datasets:[{data:cats.map(c=>c[1]),backgroundColor:[C.gold,C.pur,C.blue,C.grn,'#e8731c','#7a8aa0','#d65a7a','#4ec9c9'],borderColor:'#161b24',borderWidth:2}]},
+  options:{plugins:{legend:{position:'right',labels:{boxWidth:12,padding:8,font:{size:12}}},tooltip:{callbacks:{label:c=>c.label+': '+kr(c.raw/1000)+' t.kr ('+kr(c.raw/cats.reduce((s,x)=>s+x[1],0)*100,1)+'%)'}}}}});
 
 const dow=O.weekday;
-new Chart(cDow,{type:'bar',data:{labels:dow.map(d=>d.d),datasets:[{label:'Gns. oms./åben dag',
-  data:dow.map(d=>d.avg),backgroundColor:dow.map(d=>d.avg>10000?C.grn:C.blue),borderRadius:5}]},
-  options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>kr(c.raw)+' kr/dag · '+dow[c.dataIndex].days+' åbne dage'}}},
-  scales:{y:{ticks:{callback:v=>kr(v/1000)+'k'}}}}});
+new Chart(cDow,{type:'bar',data:{labels:dow.map(d=>d.d),datasets:[{data:dow.map(d=>d.avg),backgroundColor:dow.map(d=>d.avg>10000?C.grn:C.blue),borderRadius:5}]},
+  options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>kr(c.raw)+' kr/dag · '+dow[c.dataIndex].days+' åbne dage'}}},scales:{y:{ticks:{callback:v=>kr(v/1000)+'k'}}}}});
 
 const hrs=Object.entries(O.hourly).map(([h,v])=>({h:+h,v})).filter(x=>x.v>500).sort((a,b)=>a.h-b.h);
-new Chart(cHour,{type:'bar',data:{labels:hrs.map(x=>x.h+':00'),datasets:[{label:'Omsætning',
-  data:hrs.map(x=>x.v),backgroundColor:C.pur,borderRadius:4}]},
-  options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>kr(c.raw)+' kr'}}},
-  scales:{y:{ticks:{callback:v=>kr(v/1000)+'k'}}}}});
+new Chart(cHour,{type:'bar',data:{labels:hrs.map(x=>x.h+':00'),datasets:[{data:hrs.map(x=>x.v),backgroundColor:C.pur,borderRadius:4}]},
+  options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>kr(c.raw)+' kr'}}},scales:{y:{ticks:{callback:v=>kr(v/1000)+'k'}}}}});
 
-/* top products table */
-let tp='<thead><tr><th>Produkt</th><th>Antal</th><th>Omsætning (kr)</th><th>Andel</th></tr></thead><tbody>';
-const totp=O.top.reduce((s,x)=>s+x.ex,0);
-O.top.slice(0,12).forEach(p=>{tp+=`<tr><td>${p.product}</td><td>${kr(p.qty)}</td><td>${kr(p.ex)}</td><td>${kr(p.ex/O.ann_sales*100,1)} %</td></tr>`;});
-tp+='</tbody>';document.getElementById('topprod').innerHTML=tp;
+let tp='<thead><tr><th>Produkt</th><th>Antal</th><th>Omsætning</th><th>Andel</th></tr></thead><tbody>';
+O.top.slice(0,12).forEach(p=>tp+=`<tr><td>${p.product}</td><td>${kr(p.qty)}</td><td>${kr(p.ex)} kr</td><td>${kr(p.ex/a26.rev*100,1)} %</td></tr>`);
+document.getElementById('topprod').innerHTML=tp+'</tbody>';
 
-/* COGS chart */
-new Chart(cCogs,{type:'bar',data:{labels:['2024/25\n(helår)','2025/26\n(jul–dec, bogført)','2025/26\n(normaliseret)','Branche\nrestaurant'],
-  datasets:[{label:'Vareforbrugsprocent',data:[A.cogs/A.rev*100,B.cogs/B.rev*100,N.cogs/N.rev*100,30],
-  backgroundColor:[C.grn,C.red,C.grn,C.mut],borderRadius:6}]},
-  options:{indexAxis:'y',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>kr(c.raw,1)+' %'}}},
-  scales:{x:{ticks:{callback:v=>v+'%'}}}}});
-document.getElementById('cogs-note').innerHTML='Søjle 2 (42 %) er <b>ikke retvisende</b> — næsten et helt års indkøb er bogført i halvåret. Det strukturelle niveau er ~23 % (søjle 1 & 3).';
+/* COGS monthly with ÅTD avg line */
+const vfAvg=a26.cogs/a26.rev*100;
+new Chart(cCogsM,{type:'bar',data:{labels:mlab,datasets:[
+  {label:'Vareforbrugsprocent',data:monAll.map(m=>m.cogs_pct),backgroundColor:C.blue,borderRadius:4},
+  {type:'line',label:'ÅTD-snit',data:monAll.map(()=>vfAvg),borderColor:C.grn,borderDash:[6,4],pointRadius:0,borderWidth:2}]},
+  options:{plugins:{tooltip:{callbacks:{label:c=>c.dataset.label+': '+kr(c.raw,1)+' %'}}},scales:{y:{ticks:{callback:v=>v+'%'}}}}});
 
-/* COGS composition table */
-let ct='<thead><tr><th>Post</th><th>2025/26 (t.kr)</th></tr></thead><tbody>';
-ct+=`<tr><td>Carlsberg (øl/fadøl)</td><td>${kr(B.cogs_carlsberg/1000,1)}</td></tr>`;
-ct+=`<tr><td>Drinx / INCO (spiritus, mixers)</td><td>${kr(B.cogs_drinx/1000,1)}</td></tr>`;
-ct+=`<tr><td>Leverandørtilskud & literrabat</td><td class="pos">${kr(B.cogs_rabat/1000,1)}</td></tr>`;
-ct+=`<tr><td>Øvrige varekøb & lagerregulering</td><td>${kr((B.cogs-B.cogs_carlsberg-B.cogs_drinx-B.cogs_rabat)/1000,1)}</td></tr>`;
-ct+=`<tr class="sum"><td>Vareforbrug i alt</td><td>${kr(B.cogs/1000,1)}</td></tr></tbody>`;
-document.getElementById('cogstab').innerHTML=ct;
+new Chart(cCogs,{type:'bar',data:{labels:['ÅTD 25/26','ÅTD 24/25','Helår 24/25','Maj 2026','Branche'],
+  datasets:[{data:[vf26,vf25,fy.cogs/fy.rev*100,m26.cogs/m26.rev*100,30],backgroundColor:[C.grn,C.blue,C.blue,C.grn,C.mut],borderRadius:6}]},
+  options:{indexAxis:'y',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>kr(c.raw,1)+' %'}}},scales:{x:{ticks:{callback:v=>v+'%'}}}}});
 
-/* Wage chart */
-const md=O.monthly.filter(m=>m.ym!=='2026-06');
-const mdl=monthLab.filter((_,i)=>O.monthly[i].ym!=='2026-06');
-new Chart(cWage,{data:{labels:mdl,datasets:[
-  {type:'bar',label:'Omsætning ekskl. moms',data:md.map(m=>m.sales_ex),backgroundColor:'rgba(90,169,255,.55)',borderRadius:5,yAxisID:'y'},
-  {type:'bar',label:'Lønomkostning (kontant)',data:md.map(m=>m.wage),backgroundColor:C.gold,borderRadius:5,yAxisID:'y'}]},
-  options:{plugins:{tooltip:{callbacks:{label:c=>c.dataset.label+': '+kr(c.raw)+' kr'}}},
-  scales:{y:{ticks:{callback:v=>kr(v/1000)+'k'}}}}});
+new Chart(cWage,{data:{labels:mlab,datasets:[
+  {type:'bar',label:'Omsætning ekskl. moms',data:monAll.map(m=>m.sales_ex),backgroundColor:'rgba(90,169,255,.55)',borderRadius:5},
+  {type:'bar',label:'Lønomkostning (kontant)',data:monAll.map(m=>m.wage),backgroundColor:C.gold,borderRadius:5}]},
+  options:{plugins:{tooltip:{callbacks:{label:c=>c.dataset.label+': '+kr(c.raw)+' kr'}}},scales:{y:{ticks:{callback:v=>kr(v/1000)+'k'}}}}});
 
-/* Lønprocent chart */
-new Chart(cLon,{data:{labels:mdl,datasets:[
-  {type:'line',label:'Lønprocent',data:md.map(m=>m.lonpct),borderColor:C.grn,backgroundColor:'rgba(61,220,145,.12)',
-   fill:true,tension:.35,yAxisID:'y',pointRadius:3,borderWidth:2},
-  {type:'bar',label:'Bemandede timer',data:md.map(m=>m.hours),backgroundColor:'rgba(181,140,255,.5)',yAxisID:'y1',borderRadius:4}]},
+new Chart(cLon,{data:{labels:mlab,datasets:[
+  {type:'line',label:'Lønprocent',data:monAll.map(m=>m.lonpct),borderColor:C.grn,backgroundColor:'rgba(61,220,145,.12)',fill:true,tension:.35,pointRadius:3,borderWidth:2,yAxisID:'y'},
+  {type:'bar',label:'Bemandede timer',data:monAll.map(m=>m.hours),backgroundColor:'rgba(181,140,255,.5)',yAxisID:'y1',borderRadius:4}]},
   options:{plugins:{tooltip:{callbacks:{label:c=>c.dataset.label+': '+(c.dataset.label==='Lønprocent'?kr(c.raw,1)+' %':kr(c.raw)+' t')}}},
-  scales:{y:{position:'left',ticks:{callback:v=>v+'%'},title:{display:true,text:'Lønprocent'},suggestedMax:30},
-          y1:{position:'right',grid:{drawOnChartArea:false},title:{display:true,text:'Timer'}}}}});
-document.getElementById('loen-note').innerHTML=
- '<b>Tidsregistreringen</b> dækker '+kr(2536,0)+' bemandede timer for året (inkl. planlagte vagter frem til 27. juni). Lønprocenten falder typisk hen over efteråret, hvor omsætningen pr. time er højest (nov.–maj ligger på 11–13 %).';
+  scales:{y:{position:'left',ticks:{callback:v=>v+'%'},title:{display:true,text:'Lønprocent'},suggestedMax:26},y1:{position:'right',grid:{drawOnChartArea:false},title:{display:true,text:'Timer'}}}}});
+document.getElementById('loen-note').innerHTML='<b>Bemanding:</b> ~'+kr(O.ytd.hours)+' bemandede timer ÅTD. Lønprocenten er lavest i højsæsonen (nov.–maj: 11–13 %), hvor omsætning pr. time er størst.';
 
-/* Benchmark table */
-let bt='<thead><tr><th>Nøgletal</th><th>BG2</th><th>Branchenorm</th><th>Vurdering</th></tr></thead><tbody>';
-const brows=[
- ['Vareforbrugsprocent','~23 %','25–35 %','g','Stærk – drikkevarer giver høj margin'],
- ['Dækningsgrad','~77 %','65–75 %','g','Over normen'],
- ['Lønprocent (kontant)','~14 %','25–30 %','g','Meget lav – studenterbaseret bemanding'],
- ['Forpagtning/husleje','~21 %','8–15 %','y','Høj – tungeste faste post'],
- ['Driftsmargin (EBIT)','~20 %','5–12 %','g','Klart over normen'],
- ['Gns. bonbeløb','~95 kr','—','','—'],
+/* benchmark */
+let bt='<thead><tr><th>Nøgletal</th><th>BG2 (ÅTD)</th><th>BG2 24/25</th><th>Branchenorm</th><th>Vurdering</th></tr></thead><tbody>';
+[['Vareforbrugsprocent',pct(vf26),pct(fy.cogs/fy.rev*100),'25–35 %','g','Stærk'],
+ ['Dækningsgrad',pct(a26.db/a26.rev*100),pct(fy.db/fy.rev*100),'65–75 %','g','Over normen'],
+ ['Lønprocent (kontant)',pct(O.ytd.lonpct),'19,2 %','25–30 %','g','Meget lav'],
+ ['Forpagtning & lokaler',pct(a26.premises/a26.rev*100),pct(fy.premises/fy.rev*100),'8–15 %','y','Høj — tungeste post'],
+ ['EBITDA-margin',pct(a26.ebitda/a26.rev*100),pct(fy.ebitda/fy.rev*100),'10–18 %','g','Klart over normen'],
+ ['Gns. bonbeløb',kr(O.basket,0)+' kr','—','—','','—']
+].forEach(r=>bt+=`<tr><td>${r[0]}</td><td><b>${r[1]}</b></td><td>${r[2]}</td><td>${r[3]}</td><td><span class="pill ${r[4]}">${r[5]}</span></td></tr>`);
+document.getElementById('bench').innerHTML=bt+'</tbody>';
+
+/* observations */
+const obs=[
+ ['📈','<b>Omsætningen vokser.</b> ÅTD '+kr(a26.rev/1000)+' t.kr ekskl. moms, +'+kr(O.growth_atd,1)+' % vs. samme periode sidste år. Maj 2026 alene er +'+kr((m26.rev/m25.rev-1)*100,1)+' % vs. maj 2025.'],
+ ['💪','<b>Lønprocenten er årets vinder.</b> Faldet fra 19,2 % til '+pct(O.ytd.lonpct)+', mens omsætning pr. bemandet time er steget til ~'+kr(O.ytd.rev_per_hour)+' kr. Fasthold bemandingsmodellen.'],
+ ['🟢','<b>Vareforbruget er sundt og forbedret.</b> ÅTD '+pct(vf26)+' mod '+pct(vf25)+' sidste år. Den månedlige udsving skyldes partivis fakturering — ikke margintab.'],
+ ['🧾','<b>Få omsætning &amp; løn bogført løbende.</b> Jan–maj mangler at blive bogført i e-conomic (kun omkostninger er ført). Løbende bogføring giver retvisende månedsregnskaber direkte fra e-conomic.'],
+ ['🍺','<b>Flaskeøl bærer baren.</b> Flaskeøl er ~43 % af omsætningen, med "GRØN 4 stk" (multipakke) som største produkt. Cocktails (#2) er højmargin — fremhæv yderligere.'],
+ ['🎯','<b>Fokusér på fredag/lørdag.</b> Weekenden driver omsætningen. Test events (quiz, bordtennis-/beer-pong-turneringer) til at løfte torsdag og søndag, hvor aktivitetssalget allerede er stærkt.'],
+ ['🏦','<b>Indtjeningen er sund.</b> Helåret 2024/25 gav driftsresultat ~425 t.kr (20 % margin) og resultat efter renter ~352 t.kr. ÅTD 25/26 peger mod et endnu stærkere år.']
 ];
-brows.forEach(r=>{bt+=`<tr><td>${r[0]}</td><td><b>${r[1]}</b></td><td>${r[2]}</td><td><span class="pill ${r[3]||''}">${r[4]}</span></td></tr>`;});
-bt+='</tbody>';document.getElementById('bench').innerHTML=bt;
+document.getElementById('obs').innerHTML=obs.map(o=>`<li><div class="ic">${o[0]}</div><div>${o[1]}</div></li>`).join('');
 
-/* nav scrollspy */
-const links=[...document.querySelectorAll('#nav a')];
-const secs=links.map(l=>document.querySelector(l.getAttribute('href')));
-addEventListener('scroll',()=>{let i=secs.length-1;for(let j=0;j<secs.length;j++){if(secs[j].getBoundingClientRect().top<120)i=j;}
-  links.forEach(l=>l.classList.remove('on'));links[i]?.classList.add('on');});
+const links=[...document.querySelectorAll('#nav a')],secs=links.map(l=>document.querySelector(l.getAttribute('href')));
+addEventListener('scroll',()=>{let i=0;for(let j=0;j<secs.length;j++){if(secs[j].getBoundingClientRect().top<120)i=j;}links.forEach(l=>l.classList.remove('on'));links[i]?.classList.add('on');});
 </script>
-</body>
-</html>
+</body></html>
