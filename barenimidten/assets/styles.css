@@ -1,0 +1,122 @@
+/* Baren i Midten – Snapsting 2026
+   Festival-tema: varm, folkelig, let "torve-stemning". */
+:root{
+  --bim-plum:#4a1f3d;       /* mørk vinrød/plomme */
+  --bim-plum-2:#6b2c57;
+  --bim-amber:#f4a712;      /* snaps-gylden */
+  --bim-amber-2:#ffce5c;
+  --bim-cream:#fff7ec;
+  --bim-green:#2f7d4f;
+  --bim-ink:#2a1a24;
+  --bim-line:rgba(74,31,61,.14);
+  --maxw:1120px;
+  --radius:16px;
+  --shadow:0 10px 30px rgba(74,31,61,.12);
+  font-synthesis:none;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
+  color:var(--bim-ink);
+  background:var(--bim-cream);
+  line-height:1.55;
+}
+img{max-width:100%;display:block}
+a{color:var(--bim-plum-2);text-underline-offset:3px}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.15;letter-spacing:.2px}
+h1{font-size:clamp(2rem,5vw,3.4rem);margin:.2em 0}
+h2{font-size:clamp(1.4rem,3vw,2.1rem);margin:1.6em 0 .5em}
+h3{font-size:1.15rem;margin:1.2em 0 .3em}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+
+/* ---------- Header / nav ---------- */
+.topbar{position:sticky;top:0;z-index:50;background:var(--bim-plum);color:#fff;
+  border-bottom:3px solid var(--bim-amber)}
+.topbar .wrap{display:flex;align-items:center;gap:18px;min-height:64px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;font-weight:700}
+.brand .logo{width:40px;height:40px;border-radius:50%;background:var(--bim-amber);
+  display:grid;place-items:center;color:var(--bim-plum);font-family:Georgia,serif;font-weight:700;font-size:1.1rem}
+.brand b{font-family:Georgia,serif;font-size:1.15rem;letter-spacing:.3px}
+.brand small{display:block;font-weight:400;font-size:.72rem;opacity:.8;letter-spacing:.5px;text-transform:uppercase}
+nav.main{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav.main a{color:#fff;text-decoration:none;padding:8px 12px;border-radius:999px;font-size:.92rem;opacity:.9}
+nav.main a:hover{background:rgba(255,255,255,.12);opacity:1}
+nav.main a.active{background:var(--bim-amber);color:var(--bim-plum);font-weight:700;opacity:1}
+.navtoggle{margin-left:auto;display:none;background:transparent;border:1px solid rgba(255,255,255,.4);
+  color:#fff;border-radius:10px;padding:8px 12px;font-size:1rem;cursor:pointer}
+
+/* ---------- Hero ---------- */
+.hero{background:
+    radial-gradient(1200px 400px at 80% -10%,rgba(244,167,18,.35),transparent 60%),
+    linear-gradient(160deg,var(--bim-plum),var(--bim-plum-2));
+  color:#fff;padding:64px 0 72px;position:relative;overflow:hidden}
+.hero .kicker{display:inline-block;background:var(--bim-amber);color:var(--bim-plum);
+  font-weight:700;padding:5px 14px;border-radius:999px;font-size:.85rem;letter-spacing:.5px;text-transform:uppercase}
+.hero p.lead{font-size:1.15rem;max-width:62ch;opacity:.95}
+.hero .dates{font-family:Georgia,serif;font-size:1.3rem;margin-top:8px}
+.hero .cta{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;background:var(--bim-amber);color:var(--bim-plum);font-weight:700;
+  text-decoration:none;padding:12px 22px;border-radius:999px;box-shadow:var(--shadow);border:none;cursor:pointer}
+.btn:hover{background:var(--bim-amber-2)}
+.btn.ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.6)}
+
+/* ---------- Generic sections ---------- */
+section{padding:18px 0}
+.lead{font-size:1.1rem}
+.grid{display:grid;gap:20px}
+.cols-3{grid-template-columns:repeat(3,1fr)}
+.cols-2{grid-template-columns:repeat(2,1fr)}
+.card{background:#fff;border:1px solid var(--bim-line);border-radius:var(--radius);
+  padding:22px;box-shadow:var(--shadow)}
+.card h3{margin-top:0}
+.pill{display:inline-block;background:var(--bim-cream);border:1px solid var(--bim-line);
+  border-radius:999px;padding:3px 12px;font-size:.82rem;margin:2px 4px 2px 0}
+.note{background:#fff;border-left:5px solid var(--bim-amber);border-radius:10px;
+  padding:14px 18px;box-shadow:var(--shadow)}
+.placeholder{border:2px dashed var(--bim-line);border-radius:var(--radius);padding:34px;
+  text-align:center;color:var(--bim-plum-2);background:rgba(255,255,255,.5)}
+
+/* ---------- Program ---------- */
+.stagebar,.daybar{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.chip{border:1.5px solid var(--bim-line);background:#fff;border-radius:999px;padding:8px 16px;
+  cursor:pointer;font:inherit;font-size:.9rem;color:var(--bim-ink)}
+.chip.active{background:var(--bim-plum);color:#fff;border-color:var(--bim-plum)}
+.daybar .chip.active{background:var(--bim-amber);color:var(--bim-plum);border-color:var(--bim-amber);font-weight:700}
+.daygroup h3{border-bottom:2px solid var(--bim-amber);padding-bottom:4px}
+.prog{list-style:none;margin:0 0 10px;padding:0}
+.prog li{display:flex;gap:16px;align-items:baseline;padding:10px 12px;border-bottom:1px solid var(--bim-line)}
+.prog li:hover{background:#fff}
+.prog .t{flex:0 0 70px;font-weight:700;color:var(--bim-plum-2);font-variant-numeric:tabular-nums}
+.prog .a{flex:1}
+.prog li.open .a,.prog li.close .a{font-style:italic;color:var(--bim-plum-2)}
+.prog li.open .t::after{content:"▸"}
+.stage-h{display:flex;align-items:center;gap:10px;margin-top:26px}
+.stage-h .dot{width:14px;height:14px;border-radius:50%}
+
+/* ---------- Pladstegning (cartoon) ---------- */
+.plads-figure{background:#fff;border:1px solid var(--bim-line);border-radius:var(--radius);
+  padding:14px;box-shadow:var(--shadow);margin-top:14px}
+.plads-figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:.9rem;color:var(--bim-plum-2);margin-top:8px}
+.legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:.85rem}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:14px;height:14px;border-radius:4px;display:inline-block}
+
+/* ---------- Footer ---------- */
+footer.site{background:var(--bim-plum);color:#fff;margin-top:40px;padding:34px 0}
+footer.site a{color:var(--bim-amber-2)}
+footer.site .fgrid{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+footer.site h4{font-family:Georgia,serif;margin:0 0 8px}
+footer.site .other{font-size:.9rem;opacity:.85}
+footer.site .other ul{list-style:none;padding:0;margin:6px 0 0}
+footer.site small{opacity:.7}
+
+@media(max-width:820px){
+  .cols-3{grid-template-columns:1fr}
+  .cols-2{grid-template-columns:1fr}
+  nav.main{display:none;width:100%;flex-direction:column;margin:8px 0}
+  nav.main.open{display:flex}
+  .navtoggle{display:inline-block}
+}
