@@ -40,19 +40,27 @@ python3 -m http.server 8080
 
 ## Formularer — sådan virker indsendelse
 
-Begge formularer (vurdering + kontakt) validerer i browseren og indsender derefter.
-Indsendelse styres i toppen af `assets/js/main.js`:
+Begge formularer (vurdering + kontakt) validerer i browseren og sendes derefter som
+en rigtig AJAX-indsendelse via [Web3Forms](https://web3forms.com) — en gratis tjeneste
+til statiske sider, der videresender hver indsendelse som e-mail til virksomheden.
+Der åbnes **ikke** noget mailprogram; brugeren får en kvittering på siden.
+
+Aktivér afsendelse (engangsopsætning, ~2 min.):
+
+1. Opret en gratis **Access Key** på <https://web3forms.com> — indtast den e-mailadresse,
+   indsendelser skal sendes til (fx `kontakt@shlb.dk`). Nøglen sendes til dig med det samme.
+2. Indsæt nøglen i toppen af `assets/js/main.js`:
 
 ```js
-var FORM_ENDPOINT = "";              // sæt til fx Formspree-URL for direkte afsendelse
+var WEB3FORMS_KEY = "din-access-key-her";   // <- indsæt nøglen fra web3forms.com
 var CONTACT_EMAIL = "kontakt@shlb.dk";
+var CONTACT_PHONE = "24 63 18 05";
 ```
 
-- **Med endpoint:** Udfyld `FORM_ENDPOINT` med et endpoint fra fx
-  [Formspree](https://formspree.io), Make/Zapier-webhook eller egen backend.
-  Data sendes som JSON via `fetch`.
-- **Uden endpoint (standard):** Som fallback åbnes brugerens mailprogram med en
-  færdigudfyldt e-mail til `CONTACT_EMAIL`, så sitet virker uden server fra dag ét.
+Derefter virker begge formularer. Indtil nøglen er sat, viser formularerne en venlig
+fejlbesked med telefon og e-mail i stedet for at fejle lydløst. Et skjult honeypot-felt
+(`botcheck`) frasorterer simpel spam. Vil du hellere bruge Formspree eller egen backend,
+kan `submitForm()` i `main.js` nemt peges et andet sted hen.
 
 ## Tilpasning
 

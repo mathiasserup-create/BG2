@@ -9,11 +9,17 @@
   "use strict";
 
   /* ---- konfiguration: indsendelse af formularer -------------------------
-     Sæt FORM_ENDPOINT til et Formspree/Make/webhook-endpoint, så sendes
-     formularen direkte. Står den tom, åbnes brugerens mailprogram med en
-     færdigudfyldt e-mail (mailto) som fallback, så siden virker uden backend. */
-  var FORM_ENDPOINT = ""; // f.eks. "https://formspree.io/f/xxxxxxx"
+     Formularerne sendes via Web3Forms (https://web3forms.com) — en gratis
+     tjeneste til statiske sider, der videresender indsendelser som e-mail.
+     Sådan aktiveres afsendelse (engangsopsætning, ~2 min.):
+       1. Opret en gratis "Access Key" på https://web3forms.com – indtast den
+          e-mailadresse, indsendelser skal sendes til (fx kontakt@shlb.dk).
+       2. Indsæt nøglen i WEB3FORMS_KEY herunder.
+     Begge formularer virker derefter uden yderligere backend. */
+  var WEB3FORMS_KEY = "REPLACE-WITH-YOUR-WEB3FORMS-ACCESS-KEY";
+  var WEB3FORMS_URL = "https://api.web3forms.com/submit";
   var CONTACT_EMAIL = "kontakt@shlb.dk";
+  var CONTACT_PHONE = "24 63 18 05";
 
   document.addEventListener("DOMContentLoaded", function () {
     initYear();
@@ -199,49 +205,57 @@
     var origLabel = btn ? btn.textContent : "";
     if (btn) { btn.disabled = true; btn.textContent = "Sender …"; }
 
-    function done() {
-      var card = form.closest(".form-card") || form.parentNode;
-      var success = card.querySelector(".form-success");
-      if (success) {
-        form.style.display = "none";
-        success.classList.add("show");
-        window.scrollTo({ top: card.getBoundingClientRect().top + window.scrollY - 90, behavior: "smooth" });
-      } else {
-        alert("Tak! Vi har modtaget din henvendelse og vender hurtigt tilbage.");
-      }
+    function restore() { if (btn) { btn.disabled = false; btn.textContent = origLabel; } }
+
+    // Honeypot: hvis den skjulte botcheck er udfyldt, er det en bot – lad som om alt gik godt.
+    if (data.botcheck) { restore(); showSuccess(form); return; }
+
+    // Læsbare feltnavne til e-mailen, der lander i indbakken.
+    var payload = { access_key: WEB3FORMS_KEY, subject: subject, from_name: data.navn || "Hjemmesiden" };
+    if (data.email) payload.replyto = data.email;
+    Object.keys(data).forEach(function (k) { if (k !== "botcheck") payload[labelFor(k)] = data[k]; });
+
+    if (!WEB3FORMS_KEY || WEB3FORMS_KEY.indexOf("REPLACE") === 0) {
+      console.warn("Web3Forms-nøgle mangler – indsæt WEB3FORMS_KEY i assets/js/main.js for at aktivere afsendelse.");
+      restore(); showFormError(form); return;
     }
 
-    if (FORM_ENDPOINT) {
-      fetch(FORM_ENDPOINT, {
-        method: "POST",
-        headers: { "Accept": "application/json", "Content-Type": "application/json" },
-        body: JSON.stringify(Object.assign({ _subject: subject }, data))
-      }).then(function (r) {
-        if (!r.ok) throw new Error("fejl");
-        done();
-      }).catch(function () {
-        mailtoFallback(subject, data);
-        done();
-      }).finally(function () {
-        if (btn) { btn.disabled = false; btn.textContent = origLabel; }
-      });
+    fetch(WEB3FORMS_URL, {
+      method: "POST",
+      headers: { "Accept": "application/json", "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    })
+      .then(function (r) { return r.json().catch(function () { return { success: r.ok }; }); })
+      .then(function (res) { restore(); if (res && res.success) showSuccess(form); else showFormError(form); })
+      .catch(function () { restore(); showFormError(form); });
+  }
+
+  function showSuccess(form) {
+    var card = form.closest(".form-card") || form.parentNode;
+    var success = card.querySelector(".form-success");
+    if (success) {
+      form.style.display = "none";
+      success.classList.add("show");
+      window.scrollTo({ top: card.getBoundingClientRect().top + window.scrollY - 90, behavior: "smooth" });
     } else {
-      mailtoFallback(subject, data);
-      if (btn) { btn.disabled = false; btn.textContent = origLabel; }
-      done();
+      alert("Tak! Vi har modtaget din henvendelse og vender hurtigt tilbage.");
     }
   }
 
-  function mailtoFallback(subject, data) {
-    var lines = Object.keys(data).map(function (k) {
-      return labelFor(k) + ": " + data[k];
-    });
-    var body = "Hej Søhøjlandets Dødsbo,%0D%0A%0D%0A" +
-      "Jeg vil gerne høre nærmere. Her er mine oplysninger:%0D%0A%0D%0A" +
-      encodeURIComponent(lines.join("\n")) +
-      "%0D%0A%0D%0AVenlig hilsen";
-    var href = "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + body;
-    window.location.href = href;
+  function showFormError(form) {
+    var box = form.querySelector(".form-error-banner");
+    if (!box) {
+      box = document.createElement("div");
+      box.className = "form-error-banner";
+      box.setAttribute("role", "alert");
+      var anchor = form.querySelector(".form-nav") || form.querySelector('[type="submit"]');
+      if (anchor) anchor.parentNode.insertBefore(box, anchor); else form.appendChild(box);
+    }
+    box.innerHTML = "Beklager – din besked kunne desværre ikke sendes lige nu. " +
+      "Ring til os på <a href=\"tel:+45" + CONTACT_PHONE.replace(/\s/g, "") + "\">" + CONTACT_PHONE +
+      "</a> eller skriv til <a href=\"mailto:" + CONTACT_EMAIL + "\">" + CONTACT_EMAIL + "</a> – vi hjælper dig gerne.";
+    box.style.display = "block";
+    box.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 
   function labelFor(key) {
