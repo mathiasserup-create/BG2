@@ -16,7 +16,7 @@
           e-mailadresse, indsendelser skal sendes til (fx kontakt@shlb.dk).
        2. Indsæt nøglen i WEB3FORMS_KEY herunder.
      Begge formularer virker derefter uden yderligere backend. */
-  var WEB3FORMS_KEY = "REPLACE-WITH-YOUR-WEB3FORMS-ACCESS-KEY";
+  var WEB3FORMS_KEY = "451a77ef-fd5f-4fcc-b16e-d484ec5d1849";
   var WEB3FORMS_URL = "https://api.web3forms.com/submit";
   var CONTACT_EMAIL = "kontakt@shlb.dk";
   var CONTACT_PHONE = "24 63 18 05";
