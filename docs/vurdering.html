@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gratis vurdering · Søhøjlandets Dødsbo</title>
+  <meta name="description" content="Bestil en gratis og uforpligtende vurdering af dødsboet. Udfyld vores korte formular, så vender vi tilbage inden for 24 timer med et tilbud.">
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Spring til indhold</a>
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html" aria-label="Søhøjlandets Dødsbo – forside">
+      <img class="logo" src="assets/img/logo.svg" alt="">
+      <span class="brand-text"><span class="brand-name">Søhøjlandets Dødsbo</span><span class="brand-sub">En del af Søhøjlandets Begravelser</span></span>
+    </a>
+    <nav aria-label="Hovedmenu">
+      <ul class="nav-links">
+        <li><a href="ydelser.html">Ydelser</a></li>
+        <li><a href="saadan-foregaar-det.html">Sådan foregår det</a></li>
+        <li><a href="priser.html">Priser</a></li>
+        <li><a href="om-os.html">Om os</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a class="nav-phone" href="tel:+4524631805">24 63 18 05</a>
+      <a class="btn btn-primary" href="vurdering.html">Gratis vurdering</a>
+      <button class="nav-toggle" aria-label="Åbn menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container narrow center">
+      <span class="eyebrow">Gratis & uforpligtende</span>
+      <h1>Bestil en vurdering af dødsboet</h1>
+      <p class="lead">Udfyld de få trin herunder. Vi vender tilbage inden for 24 timer med en vurdering og et uforpligtende tilbud. Foretrækker du at ringe? Tlf. <a href="tel:+4524631805">24 63 18 05</a>.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" style="max-width:720px">
+      <div class="form-card">
+
+        <form id="vurderingForm" novalidate>
+          <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="steps-bar" aria-hidden="true">
+            <span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          </div>
+
+          <!-- STEP 1: opgave -->
+          <div class="fstep active" data-step="1">
+            <h3>Hvad har I brug for hjælp til?</h3>
+            <p class="fstep-sub">Vælg det, der passer bedst – I kan altid uddybe senere.</p>
+            <div class="field choice-group">
+              <div class="choice-grid">
+                <label class="choice"><input type="radio" name="opgavetype" value="Komplet forløb (vurdering, rydning & rengøring)" required><span class="choice-label">Komplet forløb<small>Vurdering, rydning & rengøring</small></span></label>
+                <label class="choice"><input type="radio" name="opgavetype" value="Kun rydning & tømning"><span class="choice-label">Rydning & tømning<small>Tøm boligen</small></span></label>
+                <label class="choice"><input type="radio" name="opgavetype" value="Kun vurdering & opkøb af værdier"><span class="choice-label">Vurdering & opkøb<small>Værdier i boet</small></span></label>
+                <label class="choice"><input type="radio" name="opgavetype" value="Kun rengøring"><span class="choice-label">Rengøring<small>Flytte-/hovedrengøring</small></span></label>
+                <label class="choice"><input type="radio" name="opgavetype" value="Ved ikke endnu – rådgiv mig"><span class="choice-label">Jeg er i tvivl<small>Hjælp mig videre</small></span></label>
+              </div>
+              <div class="error">Vælg venligst, hvad I har brug for hjælp til.</div>
+            </div>
+          </div>
+
+          <!-- STEP 2: boligen -->
+          <div class="fstep" data-step="2">
+            <h3>Lidt om boligen</h3>
+            <p class="fstep-sub">Det hjælper os med at give en præcis vurdering.</p>
+            <div class="field choice-group">
+              <label>Boligtype</label>
+              <div class="choice-grid">
+                <label class="choice"><input type="radio" name="boligtype" value="Lejlighed" required><span class="choice-label">Lejlighed</span></label>
+                <label class="choice"><input type="radio" name="boligtype" value="Hus/villa"><span class="choice-label">Hus / villa</span></label>
+                <label class="choice"><input type="radio" name="boligtype" value="Rækkehus"><span class="choice-label">Rækkehus</span></label>
+                <label class="choice"><input type="radio" name="boligtype" value="Andet"><span class="choice-label">Andet</span></label>
+              </div>
+              <div class="error">Vælg venligst en boligtype.</div>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="stoerrelse">Cirka størrelse <span class="hint">(m²)</span></label>
+                <input type="number" id="stoerrelse" name="stoerrelse" min="0" placeholder="fx 85">
+              </div>
+              <div class="field">
+                <label for="tidspunkt">Ønsket tidspunkt</label>
+                <select id="tidspunkt" name="tidspunkt">
+                  <option value="">Vælg …</option>
+                  <option>Hurtigst muligt</option>
+                  <option>Inden for 2 uger</option>
+                  <option>Inden for 1 måned</option>
+                  <option>Senere / ved ikke</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="boadresse">Adresse på boet <span class="hint">(valgfrit)</span></label>
+              <input type="text" id="boadresse" name="boadresse" placeholder="Vej, nr., postnr. og by">
+            </div>
+          </div>
+
+          <!-- STEP 3: kontakt -->
+          <div class="fstep" data-step="3">
+            <h3>Hvordan får vi fat i dig?</h3>
+            <p class="fstep-sub">Vi vender tilbage inden for 24 timer.</p>
+            <div class="field">
+              <label for="navn">Navn</label>
+              <input type="text" id="navn" name="navn" autocomplete="name" required>
+              <div class="error">Skriv venligst dit navn.</div>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="telefon">Telefon</label>
+                <input type="tel" id="telefon" name="telefon" autocomplete="tel" required>
+                <div class="error">Skriv et gyldigt telefonnummer.</div>
+              </div>
+              <div class="field">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" autocomplete="email" required>
+                <div class="error">Skriv en gyldig e-mailadresse.</div>
+              </div>
+            </div>
+            <div class="field">
+              <label for="relation">Din relation til afdøde <span class="hint">(valgfrit)</span></label>
+              <input type="text" id="relation" name="relation" placeholder="fx datter, søn, bobestyrer">
+            </div>
+            <div class="field">
+              <label for="besked">Besked <span class="hint">(valgfrit)</span></label>
+              <textarea id="besked" name="besked" placeholder="Fortæl gerne lidt om situationen, særlige hensyn eller spørgsmål."></textarea>
+            </div>
+          </div>
+
+          <!-- STEP 4: opsummering -->
+          <div class="fstep" data-step="4">
+            <h3>Gennemse og send</h3>
+            <p class="fstep-sub">Tjek dine oplysninger, før du sender.</p>
+            <div id="summary" style="margin-bottom:18px"></div>
+            <div class="field choice-group">
+              <label class="choice" style="padding-left:44px">
+                <input type="checkbox" name="samtykke" required>
+                <span class="choice-label">Ja tak, I må kontakte mig om min henvendelse, og jeg accepterer <a href="privatlivspolitik.html" target="_blank" rel="noopener">privatlivspolitikken</a>.</span>
+              </label>
+              <div class="error">Du skal acceptere, at vi må kontakte dig.</div>
+            </div>
+          </div>
+
+          <div class="form-nav">
+            <button type="button" class="btn btn-ghost" data-prev>← Tilbage</button>
+            <button type="button" class="btn btn-primary" data-next>Videre →</button>
+            <button type="submit" class="btn btn-primary" data-submit style="display:none">Send anmodning</button>
+          </div>
+          <p class="form-note">🔒 Dine oplysninger behandles fortroligt og bruges kun til at besvare din henvendelse.</p>
+        </form>
+
+        <div class="form-success">
+          <div class="success-badge"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></div>
+          <h2>Tak for din henvendelse</h2>
+          <p class="lead">Vi har modtaget din anmodning og vender tilbage inden for 24 timer. Haster det, er du altid velkommen til at ringe på <a href="tel:+4524631805">24 63 18 05</a>.</p>
+          <a class="btn btn-primary" href="index.html">Tilbage til forsiden</a>
+        </div>
+
+      </div>
+
+      <div class="grid grid-3" style="margin-top:34px">
+        <div class="card center"><div class="card-icon" style="margin:0 auto 12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3z"/></svg></div><h3>Uforpligtende</h3><p class="muted">Vurdering og tilbud er altid gratis.</p></div>
+        <div class="card center"><div class="card-icon" style="margin:0 auto 12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div><h3>Svar på 24 t</h3><p class="muted">Vi vender hurtigt tilbage til dig.</p></div>
+        <div class="card center"><div class="card-icon" style="margin:0 auto 12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-9-9a5 5 0 0 1 9-3 5 5 0 0 1 9 3c-2 4.5-9 9-9 9z"/></svg></div><h3>Med omsorg</h3><p class="muted">Vi behandler boet med respekt.</p></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand" style="margin-bottom:14px"><img class="logo" src="assets/img/logo.svg" alt=""><span class="brand-text"><span class="brand-name">Søhøjlandets Dødsbo</span><span class="brand-sub">En del af Søhøjlandets Begravelser</span></span></div>
+        <p style="color:#9fb0a6;max-width:30ch">Tryg og respektfuld hjælp til hele dødsboet – vurdering, opkøb, rydning og rengøring i Søhøjlandet.</p>
+      </div>
+      <div><h4>Ydelser</h4><ul><li><a href="ydelser.html#vurdering">Vurdering</a></li><li><a href="ydelser.html#opkoeb">Opkøb af værdier</a></li><li><a href="ydelser.html#rydning">Rydning & tømning</a></li><li><a href="ydelser.html#rengoering">Rengøring</a></li><li><a href="ydelser.html#donation">Donation & genbrug</a></li></ul></div>
+      <div><h4>Genveje</h4><ul><li><a href="saadan-foregaar-det.html">Sådan foregår det</a></li><li><a href="priser.html">Priser</a></li><li><a href="om-os.html">Om os</a></li><li><a href="faq.html">FAQ</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
+      <div><h4>Kontakt</h4><ul><li><a href="tel:+4524631805">Tlf. 24 63 18 05</a></li><li><a href="mailto:kontakt@shlb.dk">kontakt@shlb.dk</a></li><li>Kirkestien 4, 8800 Viborg</li><li>Man–fre 8–17</li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© <span data-year>2026</span> Søhøjlandets Begravelser · CVR 42454974</span><span><a href="privatlivspolitik.html">Privatlivspolitik</a> · <a href="kontakt.html">Kontakt</a></span></div>
+  </div>
+</footer>
+
+<a class="fab" href="tel:+4524631805" aria-label="Ring til os"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></a>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

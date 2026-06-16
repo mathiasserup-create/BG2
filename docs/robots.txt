@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /privatlivspolitik.html
+
+Sitemap: https://www.soehoejlandetsdoedsbo.dk/sitemap.xml
