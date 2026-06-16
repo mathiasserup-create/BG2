@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" role="img" aria-label="Illustration af et hjem i Søhøjlandet ved sø og bakker">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eef4ef"/>
+      <stop offset="1" stop-color="#dCe8df"/>
+    </linearGradient>
+    <linearGradient id="lake" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#bcd2cf"/>
+      <stop offset="1" stop-color="#9cbbb7"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="520" fill="url(#sky)"/>
+  <circle cx="560" cy="120" r="54" fill="#f3e9d7"/>
+  <!-- bakker -->
+  <path d="M0 300 Q150 230 330 290 T720 270 V520 H0 Z" fill="#cdded2"/>
+  <path d="M0 350 Q200 290 420 340 T720 330 V520 H0 Z" fill="#b7cdbf"/>
+  <!-- sø -->
+  <path d="M0 420 Q260 390 460 420 T720 415 V520 H0 Z" fill="url(#lake)"/>
+  <g opacity=".5" stroke="#e9f1ec" stroke-width="3" stroke-linecap="round">
+    <line x1="90" y1="455" x2="170" y2="455"/>
+    <line x1="220" y1="475" x2="330" y2="475"/>
+    <line x1="430" y1="460" x2="520" y2="460"/>
+  </g>
+  <!-- træer -->
+  <g>
+    <rect x="120" y="300" width="8" height="40" fill="#6b5a3e"/>
+    <circle cx="124" cy="292" r="26" fill="#5e7d65"/>
+    <rect x="612" y="320" width="9" height="44" fill="#6b5a3e"/>
+    <circle cx="616" cy="312" r="30" fill="#557258"/>
+  </g>
+  <!-- hus -->
+  <g>
+    <rect x="300" y="300" width="170" height="120" rx="4" fill="#f7f2e9"/>
+    <path d="M288 302 L385 232 L482 302 Z" fill="#9a5b46"/>
+    <rect x="318" y="332" width="40" height="40" rx="3" fill="#bcd2cf"/>
+    <rect x="412" y="332" width="40" height="40" rx="3" fill="#bcd2cf"/>
+    <rect x="368" y="356" width="34" height="64" rx="3" fill="#6b5a3e"/>
+    <circle cx="395" cy="390" r="2.5" fill="#f3e9d7"/>
+    <rect x="430" y="246" width="16" height="34" fill="#7d4a39"/>
+  </g>
+  <!-- omsorgsblad foran -->
+  <path d="M360 470 C390 452 430 458 452 484 C418 498 380 492 360 470 Z" fill="#c19a5b" opacity=".9"/>
+</svg>

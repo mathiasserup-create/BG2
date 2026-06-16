@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Søhøjlandets Dødsbo logo">
+  <circle cx="32" cy="32" r="32" fill="#2f4a3f"/>
+  <!-- hus -->
+  <path d="M20 31 L32 21 L44 31 V45 a2 2 0 0 1-2 2 H22 a2 2 0 0 1-2-2 Z" fill="#f4efe6"/>
+  <rect x="29" y="38" width="6" height="9" rx="1" fill="#2f4a3f"/>
+  <!-- blad / omsorg -->
+  <path d="M32 14 C38 17 40 23 36 29 C30 26 30 19 32 14 Z" fill="#c19a5b"/>
+  <path d="M32 14 C26 17 24 23 28 29" fill="none" stroke="#c19a5b" stroke-width="2" stroke-linecap="round"/>
+</svg>
