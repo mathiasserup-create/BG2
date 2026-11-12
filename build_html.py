@@ -6,6 +6,7 @@ HTML = r"""<!DOCTYPE html>
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="robots" content="noindex, nofollow"/>
 <title>BG2 ApS · Ledelsesrapportering 2025/26</title>
 <script>__CHARTJS__</script>
 <style>
